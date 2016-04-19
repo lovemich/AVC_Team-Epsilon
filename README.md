@@ -1,5 +1,6 @@
 # AVC_Team-Epsilon
 Team Epsilon's AVC repository.
+
 ## Conflicting Times
 Phys114 - 21st April, term test 1 - Lewis
 Phys122 - 22nd April, term test 1 - Lavanya, Logan, Michael, Brandon, Devon
@@ -15,7 +16,6 @@ Phys122 assignments every week - Lavanya, Logan, Michael, Devon, Brandon
 
 Engr121 assignments every week - Lewis, Lavanya, Logan, Michael, Devon, Brandon
 Engr121 two week labs with a week gap between them - Lewis, Lavanya, Logan, Michael, Devon, Brandon
-
 
 Lavanya works:
 Wednesday 3:30-6:30pm

@@ -9,6 +9,9 @@ extern "C" {
   int Sleep(int sec, int usec);
 }
 
+const int MOTOR_LEFT = 1;
+const int MOTOR_RIGHT = 2;
+
 const int SPEED_MAX = 255;
 // The difference between the motor speeds cannot exceed
 // 	SPEED_MAX / DELTA_MAX_DIV
@@ -20,6 +23,12 @@ int speed_base = SPEED_MAX / 2;
 // These are the difference between the 
 int speed_delta_left = 0;
 int speed_delta_right = 0;
+
+void move();
+void turn(int amount);
+void reset_turn();
+void set_speed(int speed);
+void halt();
 
 int main() {
   init();

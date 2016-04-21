@@ -1,6 +1,6 @@
 # Objects
 *.o
 # Libraries
-LibE101.so
+*.so
 # The compiled file
 main

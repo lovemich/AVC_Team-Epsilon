@@ -59,9 +59,9 @@ Group Goal: Code done for quad 1
 Group Goal: Quadrant 1 completed/code done for quad 2
 
 
-#Week 4 Goal: Finish progress report/Hardware done for Quad 2
-#Week 5 Goal: Test Quad 2/Code for Quad 3/ Hardware done for Quad 3
-#Week 6 Goal:Test Quad 3/ Start planning for quad 4
-#Week 7 Goal: Code for Quad 4 & Hardware
-#Week 8 Goal: Test everything fix bugs
-#Week 9 Goal: Have robot pass all quads
+Week 4 Goal: Finish progress report/Hardware done for Quad 2
+Week 5 Goal: Test Quad 2/Code for Quad 3/ Hardware done for Quad 3
+Week 6 Goal:Test Quad 3/ Start planning for quad 4
+Week 7 Goal: Code for Quad 4 & Hardware
+Week 8 Goal: Test everything fix bugs
+Week 9 Goal: Have robot pass all quads

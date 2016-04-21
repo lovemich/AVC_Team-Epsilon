@@ -22,7 +22,8 @@ Lavanya works:
 - Some Thursdays 4:30-7:00pm
 - Some Saturday and Sunday’s lunch rush
 
-| Tasks - Week 1  |
+#Week 1 
+| Person | Task |
 | :------------ |:---------------:| 
 | Lewis   | Create base chassis | 
 | Logan   | Draw basic design, organise components (wheels, support parts etc) |
@@ -33,7 +34,8 @@ Lavanya works:
 | ...      | ... |
 Group Goal: Get robot moving in a straight line, able to control turning and have the AVC plan done.
 
-| Tasks - Week 2  |
+#Week 2
+| Person | Task |
 | :------------ |:---------------:| 
 | Lewis   | Start outline for progress report | 
 | Logan   | Finalise design |
@@ -42,9 +44,10 @@ Group Goal: Get robot moving in a straight line, able to control turning and hav
 | Lavanya | Write background section |
 | Brandon | Ensure code is done for quad 1/arrange team digital meeting |
 | ...      | ... |
-Group Goal: Code done fofr quad 1
+Group Goal: Code done for quad 1
 
-| Tasks - Week 3 |
+#Week 3
+| Person | Task |
 | :------------ |:---------------:| 
 | Lewis   | Hardware done for quadrant 1/start for 2 | 
 | Logan   | Code for turning when reaching a corner/dead end |
@@ -56,9 +59,9 @@ Group Goal: Code done fofr quad 1
 Group Goal: Quadrant 1 completed/code done for quad 2
 
 
-###Week 4 Goal: Finish progress report/Hardware done for Quad 2
-###Week 5 Goal: Test Quad 2/Code for Quad 3/ Hardware done for Quad 3
-###Week 6 Goal:Test Quad 3/ Start planning for quad 4
-###Week 7 Goal: Code for Quad 4 & Hardware
-###Week 8 Goal: Test everything fix bugs
-###Week 9 Goal: Have robot pass all quads
+#Week 4 Goal: Finish progress report/Hardware done for Quad 2
+#Week 5 Goal: Test Quad 2/Code for Quad 3/ Hardware done for Quad 3
+#Week 6 Goal:Test Quad 3/ Start planning for quad 4
+#Week 7 Goal: Code for Quad 4 & Hardware
+#Week 8 Goal: Test everything fix bugs
+#Week 9 Goal: Have robot pass all quads

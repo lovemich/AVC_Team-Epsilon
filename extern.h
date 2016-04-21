@@ -1,9 +1,5 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-
-#include "extern.h"
-#include "movement.h"
+#ifndef __EXTERN_H__
+#define __EXTERN_H__
 
 extern "C" {
   int init(); // InitHardware()
@@ -12,12 +8,4 @@ extern "C" {
   int Sleep(int sec, int usec);
 }
 
-int main() {
-  init();
-  move();
-  Sleep(1, 0);
-  halt();
-  return 0;
-}
-
-
+#endif

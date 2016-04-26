@@ -25,12 +25,12 @@ Lavanya works:
 #Week 1 
 | Person | Task |
 | :------------ |:---------------:| 
-| Lewis   | Create base chassis | 
+| Lewis   | Create base chassis ✔| 
 | Logan   | Draw basic design, organise components (wheels, support parts etc) |
-| Michael | Research networking on how to open the gate/create github project |
-| Devon   | Write software for movement (forwards and turning) |
-| Lavanya | Setup readme in github |
-| Brandon | Implement sensor averaging/ensure AVC plan is done |
+| Michael | Research networking on how to open the gate/create github project ✔|
+| Devon   | Write software for movement (forwards and turning) ✔|
+| Lavanya | Setup readme in github ✔|
+| Brandon | Implement sensor averaging/ensure AVC plan is done ✔|
 | ...      | ... |
 Group Goal: Get robot moving in a straight line, able to control turning and have the AVC plan done.
 
@@ -39,7 +39,7 @@ Group Goal: Get robot moving in a straight line, able to control turning and hav
 | :------------ |:---------------:| 
 | Lewis   | Start outline for progress report | 
 | Logan   | Finalise design |
-| Michael | Have code for gate opening done |
+| Michael | Have started code for gate opening done |
 | Devon   | Have robot stop when the line is lost |
 | Lavanya | Write background section |
 | Brandon | Ensure code is done for quad 1/arrange team digital meeting |
@@ -54,7 +54,7 @@ Group Goal: Code done for quad 1
 | Michael | Start developing a way to complete the maze |
 | Devon   | Keep working on code for line following |
 | Lavanya | More progress report/help with hardware |
-| Brandon | Check progress plan for for next week |
+| Brandon | Check progress plan for next week |
 | ...      | ... |
 Group Goal: Quadrant 1 completed/code done for quad 2
 

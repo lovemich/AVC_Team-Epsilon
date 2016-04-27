@@ -24,7 +24,7 @@ void move() {
 void turn(int amount) {
   // Make sure the difference limit is not violated
   if (DELTA_MAX < abs(amount)) {
-    amount = sign(amount) * DELTA;
+    amount = sign(amount) * DELTA_MAX;
   }
   // Make sure the speed limit is not violated
   int left = speed_base - amount;

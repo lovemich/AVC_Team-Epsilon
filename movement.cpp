@@ -30,7 +30,7 @@ void turn(int amount) {
   int left = speed_base - amount;
   int right = speed_base + amount;
   if (left < -SPEED_MAX || left > SPEED_MAX || right < -SPEED_MAX || right > SPEED_MAX) {
-    amount = sign(amount) * (SPEED_MAX - base_speed);
+    amount = sign(amount) * (SPEED_MAX - speed_base);
   }
   // Actually update the turning now
   speed_delta = amount;

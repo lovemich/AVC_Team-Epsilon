@@ -3,13 +3,18 @@
 
 #include "extern.h"
 #include "movement.h"
+#include "util.h"
 
 /**
  * Sets the motor speed for both motors
  */
 void move() {
-  set_motor(MOTOR_LEFT,  1,  speed_base + speed_delta_left);
-  set_motor(MOTOR_RIGHT,  1,  speed_base + speed_delta_right);
+  int left_direction = (speed_base - speed_delta) >= 0 ? 1 : 2;
+  int right_direction = (speed_base + speed_delta) >= 0 ? 1 : 2;
+  int left_speed = abs(speed_base - speed_delta);
+  int right_speed = abs(speed_base + speed_delta);
+  set_motor(MOTOR_LEFT,  left_direction,  left_speed);
+  set_motor(MOTOR_RIGHT,  right_direction,  left_speed);
 }
 
 /**
@@ -18,17 +23,17 @@ void move() {
  */
 void turn(int amount) {
   // Make sure the difference limit is not violated
-  if (DELTA_MAX_DIFF < abs(-speed_delta_left + speed_delta_right)) {
-    return;
+  if (DELTA_MAX < abs(amount)) {
+    amount = sign(amount) * DELTA;
   }
-  int left_change = speed_delta_left - amount;
-  int right_change = speed_delta_right + amount;
-  if (left_change < -SPEED_MAX || left_change > SPEED_MAX) {
-    speed_delta_left = left_change;
+  // Make sure the speed limit is not violated
+  int left = speed_base - amount;
+  int right = speed_base + amount;
+  if (left < -SPEED_MAX || left > SPEED_MAX || right < -SPEED_MAX || right > SPEED_MAX) {
+    amount = sign(amount) * (SPEED_MAX - base_speed);
   }
-  if (right_change < -SPEED_MAX || right_change > SPEED_MAX) {
-    speed_delta_right = right_change;
-  }
+  // Actually update the turning now
+  speed_delta = amount;
   move();
 }
 
@@ -36,8 +41,7 @@ void turn(int amount) {
  * Resets the deltas of the motors so that they move at the same speed.
  */
 void reset_turn() {
-  speed_delta_left = 0;
-  speed_delta_right = 0;
+  speed_delta = 0;
   move();
 }
 
@@ -54,7 +58,6 @@ void set_speed(int speed) {
  */
 void halt() {
   speed_base = 0;
-  speed_delta_left = 0;
-  speed_delta_right = 0;
+  speed_delta = 0;
   move();
 }

@@ -19,7 +19,6 @@ Team Epsilon's AVC repository.
 
 Lavanya works:
 - Wednesday 3:30-6:30pm
-- Some Thursdays 4:30-7:00pm
 - Some Saturday and Sunday’s lunch rush
 
 #Week 1 

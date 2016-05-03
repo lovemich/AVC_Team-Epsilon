@@ -3,6 +3,8 @@
 
 const int IMAGE_SIZE_X = 320;
 const int IMAGE_SIZE_Y = 240;
+// The offset towards right at which sampling begins
+const int SAMPLE_OFFSET = (IMAGE_SIZE_X / 3) * 2;
 // The program samples every SAMPLE_STEPS pixels
 const int SAMPLE_STEPS = 10;
 const int COLOR_WHITE = 3;

@@ -9,7 +9,7 @@ void follow_line() {
   while (true) {
     int threshold_count = 0;
     int movement = 0;
-    for (int i; i < IMAGE_SIZE_X; i += SAMPLE_STEPS) {
+    for (int i = SAMPLE_OFFSET; i < IMAGE_SIZE_X; i += SAMPLE_STEPS) {
       int pixel_value = get_pixel(IMAGE_SIZE_Y / 2, i, COLOR_WHITE);
       // Add to counter if a pixel is 'white enough' to be part of a line
       if (pixel_value > STOP_THRESHOLD) {

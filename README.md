@@ -2,9 +2,9 @@
 Team Epsilon's AVC repository.
 
 ## Conflicting Times
-- Phys114 - 21st April, term test 1 - Lewis
-- Phys122 - 22nd April, term test 1 - Lavanya, Logan, Michael, Brandon, Devon
-- Mid-tri break - 23rd April - 2nd May - Lewis, Lavanya, Logan, Michael, Devon, Brandon
+- Phys114 - 21st April, term test 1 - Lewis ✔
+- Phys122 - 22nd April, term test 1 - Lavanya, Logan, Michael, Brandon, Devon ✔
+- Mid-tri break - 23rd April - 2nd May - Lewis, Lavanya, Logan, Michael, Devon, Brandon ✔
 - Comp102 - 9th May, term test 2 - Lewis, Lavanya, Logan, Michael 
 - Engr121 - 16th - 20th May, term test 2 - Lewis, Lavanya, Logan, Michael, Devon, Brandon
 - Engr101 - 30th May, term test 2 - Lewis, Lavanya, Logan, Michael, Devon, Brandon

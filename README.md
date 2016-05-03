@@ -38,11 +38,11 @@ Group Goal: Get robot moving in a straight line, able to control turning and hav
 
 #Week 1 Review 
  
- - Lewis came in spare time and created the base chassis
- - Logan drawen a basic design and planned parts location 
- - Michel is resaerching how to open the gate  but has issues with lack of infomation 
- - Devon created the software for movement and also started creating line following code
- - Brandon impemented code for sensor averaging and made sure the team got the plan done in the lab
+ - Lewis came in spare time and created the base chassis.
+ - Logan drawen a basic design and planned parts location.
+ - Michel is resaerching how to open the gate  but has issues with lack of infomation.
+ - Devon created the software for movement and also started creating line following code.
+ - Brandon impemented code for sensor averaging and made sure the team got the plan done in the lab.
 
 #Week 2
 | Person | Task |
@@ -58,11 +58,11 @@ Group Goal: Code done for quad 1
 
 #Week 2 Review
 
-- Lewis didn't start the outline for the progress report, Lavanya is planning to do it next week
-- Logan finished he design and showed the group on the skype meeting
-- Michael is yet to workout how open the gate and can't find anything out about it
-- Devon has created the the code for line following and is starting the line is lost task
-- Brandon made sure that the code  is done for quad and made the group have a skpe meeting at wednesday at 6pm
+- Lewis didn't start the outline for the progress report but made a group file that everyone could add to. Lavanya and Lewis are planning to do it next week.
+- Logan finished he design and showed the group on the skype meeting.
+- Michael is yet to workout how open the gate and can't find anything out about it.
+- Devon has created the the code for line following and is starting the line is lost task.
+- Brandon made sure that the code  is done for quad and made the group have a skpe meeting at wednesday at 6pm.
 
 #Week 3
 | Person | Task |

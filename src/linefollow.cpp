@@ -22,9 +22,9 @@ void follow_line() {
       break;
     }
     if (movement < 0) {
-      turn(-5);
+      turn(-40);
     } else if (movement > 0) {
-      turn(5);
+      turn(40);
     } else {
       reset_turn();
     }

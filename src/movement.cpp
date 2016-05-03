@@ -7,7 +7,7 @@
 #include "util.h"
 
 // Speed is 100% at 255
-static int speed_base = SPEED_MAX / 2;
+static int speed_base = SPEED_MAX / 4;
 // Negative speed_delta gives
 static int speed_delta = 0;
 

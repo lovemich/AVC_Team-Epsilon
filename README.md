@@ -19,6 +19,7 @@ Team Epsilon's AVC repository.
 
 Lavanya works:
 - Wednesday 3:30-6:30pm
+- Some Thursdays 4:30-7:00pm
 - Some Saturday and Sunday’s lunch rush
 
 #Week 1 
@@ -33,6 +34,14 @@ Lavanya works:
 | ...      | ... |
 Group Goal: Get robot moving in a straight line, able to control turning and have the AVC plan done.
 
+ #Week 1 Review 
+ 
+ - Lewis came in spare time and created the base chassis
+ - Logan drawen a basic design and planned parts location 
+ - Michel is resaerching how to open the gate  but has issues with lack of infomation 
+ - Devon created the software for movement and also started creating line following code
+ - Brandon impemented code for sensor averaging and made sure the team got the plan done in the lab
+
 #Week 2
 | Person | Task |
 | :------------ |:---------------:| 
@@ -44,6 +53,14 @@ Group Goal: Get robot moving in a straight line, able to control turning and hav
 | Brandon | Ensure code is done for quad 1/arrange team digital meeting ✔|
 | ...      | ... |
 Group Goal: Code done for quad 1
+
+#Week 2 Review
+
+- Lewis didn't start the outline for the progress report, Lavanya is planning to do it next week
+- Logan finnshed he dsgin and showed the group on the skype meeting
+- Michael is yet to workout how open the gate and can't find anything out about it
+- Devon has created the the code for line following and is starting the line is lost task
+- Brandon made sure that the code  is done for quad and made the group have a skpe meeting at wednesday at 6pm
 
 #Week 3
 | Person | Task |
@@ -58,7 +75,18 @@ Group Goal: Code done for quad 1
 Group Goal: Quadrant 1 completed/code done for quad 2
 
 
-- Week 4 Goal: Finish progress report/Hardware done for Quad 2
+#Week 4
+| Person | Task |
+| :------------ |:---------------:| 
+| Lewis   | Have Hardware for quad 2 ready for testing | 
+| Logan   | Countine with help coding with line following code|
+| Michael | Layout the google doc AVC report and check grammer/continue to work out gate issues  |
+| Devon   | Have line following code tested and start fixing bugs |
+| Lavanya | Work on the Method section of the AVC progess report|
+| Brandon | Do the Abstract section of the AVC progess report |
+| ...      | ... |
+Group Goal: Finish progress report/Hardware done for Quad 2
+
 - Week 5 Goal: Test Quad 2/Code for Quad 3/ Hardware done for Quad 3
 - Week 6 Goal:Test Quad 3/ Start planning for quad 4
 - Week 7 Goal: Code for Quad 4 & Hardware

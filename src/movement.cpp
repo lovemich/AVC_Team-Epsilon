@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "extern.h"
 #include "movement.h"
@@ -39,6 +40,7 @@ void turn(int amount) {
   }
   // Actually update the turning now
   speed_delta = amount;
+  printf("Turning by %i", amount);
   move();
 }
 

@@ -3,13 +3,11 @@
 #include <stdio.h>
 
 #include "extern.h"
-#include "movement.h"
+#include "linefollow.h"
 
 int main() {
   init();
-  move();
-  Sleep(1, 0);
-  halt();
+  follow_line();
   return 0;
 }
 

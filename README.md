@@ -59,7 +59,7 @@ Group Goal: Code done for quad 1
 #Week 2 Review
 
 - Lewis didn't start the outline for the progress report, Lavanya is planning to do it next week
-- Logan finnshed he dsgin and showed the group on the skype meeting
+- Logan finished he design and showed the group on the skype meeting
 - Michael is yet to workout how open the gate and can't find anything out about it
 - Devon has created the the code for line following and is starting the line is lost task
 - Brandon made sure that the code  is done for quad and made the group have a skpe meeting at wednesday at 6pm
@@ -67,7 +67,7 @@ Group Goal: Code done for quad 1
 #Week 3
 | Person | Task |
 | :------------ |:---------------:| 
-| Lewis   | Hardware done for quadrant 1/start for 2 | 
+| Lewis   | Start outline for progress report/Hardware done for quadrant 1/start for 2 | 
 | Logan   | Code for turning when reaching a corner/dead end |
 | Michael | Start developing a way to complete the maze |
 | Devon   | Keep working on code for line following |

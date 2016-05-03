@@ -19,7 +19,7 @@ void move() {
   int left_speed = abs(speed_base - speed_delta);
   int right_speed = abs(speed_base + speed_delta);
   set_motor(MOTOR_LEFT,  left_direction,  left_speed);
-  set_motor(MOTOR_RIGHT,  right_direction,  left_speed);
+  set_motor(MOTOR_RIGHT,  right_direction,  right_speed);
 }
 
 /**

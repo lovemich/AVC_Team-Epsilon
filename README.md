@@ -21,6 +21,9 @@ Lavanya works:
 - Wednesday 3:30-6:30pm
 - Some Saturday and Sunday’s lunch rush
 
+Brandon works:
+- Wednesday 5:00-6:00pm
+
 #Week 1 
 | Person | Task |
 | :------------ |:---------------:| 

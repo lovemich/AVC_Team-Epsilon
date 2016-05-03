@@ -34,7 +34,7 @@ Lavanya works:
 | ...      | ... |
 Group Goal: Get robot moving in a straight line, able to control turning and have the AVC plan done.
 
- #Week 1 Review 
+#Week 1 Review 
  
  - Lewis came in spare time and created the base chassis
  - Logan drawen a basic design and planned parts location 
@@ -48,7 +48,7 @@ Group Goal: Get robot moving in a straight line, able to control turning and hav
 | Lewis   | Start outline for progress report | 
 | Logan   | Finalise design ✔|
 | Michael | Have started code for gate opening |
-| Devon   | Have robot stop when the line is lost |
+| Devon   | Have robot stop when the line is lost ✔|
 | Lavanya | Write background section ✔|
 | Brandon | Ensure code is done for quad 1/arrange team digital meeting ✔|
 | ...      | ... |

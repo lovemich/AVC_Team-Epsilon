@@ -10,10 +10,6 @@ const int SPEED_MAX = 255;
 // At value 1 there is no limit aside from the hard limit at SPEED_MAX
 const int DELTA_MAX_DIV = 4;
 const int DELTA_MAX = SPEED_MAX / DELTA_MAX_DIV;
-// Speed is 100% at 255
-static int speed_base = SPEED_MAX / 2;
-// Negative speed_delta gives
-static int speed_delta = 0;
 
 void move();
 void turn(int amount);

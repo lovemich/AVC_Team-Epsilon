@@ -5,6 +5,11 @@
 #include "movement.h"
 #include "util.h"
 
+// Speed is 100% at 255
+static int speed_base = SPEED_MAX / 2;
+// Negative speed_delta gives
+static int speed_delta = 0;
+
 /**
  * Sets the motor speed for both motors
  */

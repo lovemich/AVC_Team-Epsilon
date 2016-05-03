@@ -7,6 +7,7 @@
  */
 void follow_line() {
   while (true) {
+    take_picture();
     int threshold_count = 0;
     int movement = 0;
     for (int i = SAMPLE_OFFSET; i < IMAGE_SIZE_X; i += SAMPLE_STEPS) {

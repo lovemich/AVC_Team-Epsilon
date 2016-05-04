@@ -1,5 +1,6 @@
 # AVC_Team-Epsilon
 Team Epsilon's AVC repository.
+RPi ip: 10.140.195.125
 
 ## Conflicting Times
 - Phys114 - 21st April, term test 1 - Lewis ✔

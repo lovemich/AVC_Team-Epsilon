@@ -11,10 +11,13 @@ default: $(BIN)
 $(BIN): $(OBJ)
 	$(C) $(OBJ)
 
-build/%.o: src/%.cpp
+build/%.o: src/%.cpp clean
 	$(C) -c $< -o $@ $(FLAGS)
 
-clean: clean-bin clean-iso
+setup_dirs:
+	mkdir -p ./build
+
+clean:
 	rm -rf ./build
 	mkdir -p ./build
 

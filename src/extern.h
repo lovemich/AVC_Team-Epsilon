@@ -8,6 +8,9 @@ extern "C" {
   int Sleep(int sec, int usec);
   int take_picture();
   int get_pixel(int row, int col, int color);
+  int connect_to_server(char server_addr[15], int port);
+  int send_to_server(char message[24]);
+  int receive_from_server(char message[24]);
 }
 
 #endif

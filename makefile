@@ -1,5 +1,6 @@
 C = g++
-FLAGS  = -Wall -Wextra -lE101
+FLAGS  = -Wall -Wextra
+LIB = -lE101
 
 BIN = main
 
@@ -9,7 +10,7 @@ OBJ = $(patsubst ./src/%.cpp, build/%.o, $(SRC))
 default: $(BIN)
 
 $(BIN): $(OBJ)
-	$(C) $(OBJ)
+	$(C) $(OBJ) $(LIB)
 
 build/%.o: src/%.cpp clean
 	$(C) -c $< -o $@ $(FLAGS)

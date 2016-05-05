@@ -12,5 +12,10 @@ int main(){
   connect_to_server(135.195.6.196, 22);
   //Sends the opening message "please"
   send_to_server("please");
+  //Receives password back from server
+  char message[6];
+  receive_from_server(message);
+  send_to_server(message);
+  printf("%s", message);
   return 0;
 }

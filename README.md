@@ -71,7 +71,7 @@ Group Goal: Code done for quad 1
 | Lewis   | Start outline for progress report/Hardware done for quadrant 1/start for 2 | 
 | Logan   | Code for turning when reaching a corner/dead end |
 | Michael | Start developing a way to complete the maze |
-| Devon   | Keep working on code for line following |
+| Devon   | Keep working on code for line following and add details for running code on readme |
 | Lavanya | More progress report/help with hardware |
 | Brandon | Check progress plan for next week |
 | ...      | ... |

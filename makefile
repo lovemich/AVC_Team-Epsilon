@@ -10,7 +10,7 @@ OBJ = $(patsubst ./src/%.cpp, build/%.o, $(SRC))
 default: $(BIN)
 
 $(BIN): $(OBJ)
-	$(C) $(OBJ) $(LIB)
+	$(C) -o $(BIN) $(OBJ) $(LIB)
 
 build/%.o: src/%.cpp clean
 	$(C) -c $< -o $@ $(FLAGS)

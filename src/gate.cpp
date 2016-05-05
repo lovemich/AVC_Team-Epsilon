@@ -6,7 +6,7 @@
 
 int open_gate() {
   //Connects to the server IP: 135.195.6.196 port: 22
-  char ip[15] = "135.195.6.196";
+  char ip[15] = "130.195.6.196";
   connect_to_server(ip, 22);
   //Sends the opening message "please"
   char open[24] = "please";

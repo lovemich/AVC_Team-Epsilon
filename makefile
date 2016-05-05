@@ -1,5 +1,5 @@
 C = g++
-FLAGS  = -Wall -Wextra
+FLAGS  = -Wall -Wextra -lE101
 
 BIN = main
 

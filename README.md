@@ -2,6 +2,35 @@
 Team Epsilon's AVC repository.
 RPi ip: 10.140.195.125
 
+## Running the code
+### Clone the repository if necessary.
+```bash
+git clone http://github.com/lovemich/AVC_Team-Epsilon
+```
+### Pull latest changes from the repository.
+This step is not required if you have just cloned the repo.
+```bash
+git pull
+```
+### (Optional step) Now you can build the code.
+To build, use the command `make`.
+If you are not using the RPi the `make` command will fail as the libE101.so library is compiled for the RPi only. In this situation please instead use `make nolink`. Note that using this command will not verify that the correct variables or methods are being used, only that the syntax is correct. This command will not generate any runnable files; for that you'll need the RPi.
+### Run the code
+You can run the code with **either** of these commands.
+```bash
+make run
+./main
+```
+Using the `make run` command is preferred as it will automatically build any modified files. If you use the second option, you *will* have to use `make` to build the binary.
+
+If that doesn't work, you may need to run with root priviledges. You may use any of the following to run as root
+```bash
+make sudo_run
+sudo make run
+sudo ./main
+```
+Remember that the last option there will require first using `make` to build the binary.
+
 ## Conflicting Times
 - Phys114 - 21st April, term test 1 - Lewis ✔
 - Phys122 - 22nd April, term test 1 - Lavanya, Logan, Michael, Brandon, Devon ✔

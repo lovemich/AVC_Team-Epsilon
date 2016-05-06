@@ -1,20 +1,22 @@
-#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
 #include "extern.h"
+#include "gate.h"
 
-int open_gate() {
-  //Connects to the server IP: 135.195.6.196 port: 22
-  char ip[15] = "130.195.6.196";
-  connect_to_server(ip, 1024);
-  //Sends the opening message "Please"
-  char open[24] = "Please";
-  send_to_server(open);
-  //Receives password back from server
-  char message[24] = "123456";
-  //receive_from_server(message);
-  send_to_server(message);
-  printf("Password: %s", message);
-  return 0;
+char ip[15] = "130.195.6.196";
+int port = 1024;
+char request[24] = "Please";
+char password[24] = "123456";
+
+/**
+ * Sends a request to the gate server to open the gate.
+ */
+void open_gate() {
+  // Establishes a connection to the gate's server
+  connect_to_server(ip, port);
+  // Sends the request to open the gate
+  send_to_server(request);
+  // Sends the password for the gate
+  send_to_server(password);
 }

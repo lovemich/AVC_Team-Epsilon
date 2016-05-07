@@ -1,4 +1,4 @@
-C = g++
+C = g++ -std=c++11
 FLAGS  = -Wall -Wextra -MMD -MP
 LIB = -lE101
 

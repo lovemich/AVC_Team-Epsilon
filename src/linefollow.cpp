@@ -11,7 +11,7 @@ void follow_line() {
   int integral = 0;
   int previous_error = 0;
   timeval prev_time;
-  gettimeofday(&prev_time, NULL);
+  gettimeofday(&prev_time, nullptr);
   for (int i = 0; true; i++) {
     // Delay slightly before next iteration
     Sleep(0, UPDATE_DELAY);
@@ -27,7 +27,7 @@ void follow_line() {
     int proportional_error = error / (pixels_x * pixels_y);
     int proportional_integral = i == 0 ? 0 : integral / i;
     timeval curr_time;
-    gettimeofday(&curr_time, NULL);
+    gettimeofday(&curr_time, nullptr);
     long d_sec = (curr_time.tv_sec - prev_time.tv_sec);
     double d_time = (curr_time.tv_usec - prev_time.tv_usec) / 1000000.0 + d_sec;
     int derivative = (error - previous_error) / d_time;

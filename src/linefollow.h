@@ -22,6 +22,7 @@ const int K_I = 0.2;
 const int K_D = 0.3;
 
 void follow_line();
+int sample_image(int &white_count);
 
 #endif
 

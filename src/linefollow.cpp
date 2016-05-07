@@ -54,20 +54,22 @@ void follow_line() {
  * @return The line-following error in the image
  */
 int sample_image(int &white_count) {
+  int error = 0;
   take_picture();
   // Get pixels from across the entire image, not just one line
   for (int x = 0; x < IMAGE_SIZE_X; x += SAMPLE_STEPS) {
     for (int y = 0; y < IMAGE_SIZE_Y; y += SAMPLE_STEPS) {
       int pixel_value = get_pixel(y, x, COLOR_WHITE);
       // Check if pixel is white
-      if (pixel_value > STOP_THRESHOLD) {
+      if (pixel_value > WHITE_THRESHOLD) {
         // Add to counter if a pixel is 'white enough' to be part of a line
         white_count++;
         // Now weigh the pixel into the error
         // I'm assuming y increases downwards when weighing
-        weight = y > (IMAGE_SIZE_Y / 2) ? 2 : 1;
-        error += (i - IMAGE_SIZE_X / 2) * weight;
+        int weight = y > (IMAGE_SIZE_Y / 2) ? 2 : 1;
+        error += (x - IMAGE_SIZE_X / 2) * weight;
       }
     }
   }
+  return error;
 }

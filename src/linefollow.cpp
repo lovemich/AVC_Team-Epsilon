@@ -1,3 +1,5 @@
+#include <sys/time.h>
+
 #include "linefollow.h"
 #include "movement.h"
 #include "extern.h"
@@ -7,7 +9,12 @@
  */
 void follow_line() {
   int integral = 0;
+  int previous_error = 0;
+  timeval prev_time;
+  gettimeofday(&prev_time, NULL);
   for (int i = 0; true; i++) {
+    // Delay slightly before next iteration
+    Sleep(0, UPDATE_DELAY);
     int white_count = 0;
     int error = sample_image(white_count);
     // Break if there are not enough 'line worthy' pixels
@@ -19,16 +26,23 @@ void follow_line() {
     int pixels_y = (3 * (IMAGE_SIZE_Y / 2)) / SAMPLE_STEPS;
     int proportional_error = error / (pixels_x * pixels_y);
     int proportional_integral = i == 0 ? 0 : integral / i;
+    timeval curr_time;
+    gettimeofday(&curr_time, NULL);
+    long d_sec = (curr_time.tv_sec - prev_time.tv_sec);
+    double d_time = (curr_time.tv_usec - prev_time.tv_usec) / 1000000.0 + d_sec;
+    int derivative = (error - previous_error) / d_time;
+    prev_time = curr_time;
     int movement;
     // Start with the proportional component;
     movement = proportional_error * K_P;
     // Add the integral component
-    movement += integral * K_I;
+    movement += proportional_integral * K_I;
+    // Add the derivative component
+    movement += derivative * K_D;
     // Update integral component
     integral += proportional_error;
-    // Turn and then delay slightly before next iteration
+    // Turn
     turn(movement);
-    Sleep(0, UPDATE_DELAY);
   }
   halt();
 }

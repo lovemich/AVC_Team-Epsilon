@@ -16,9 +16,10 @@ const int UPDATE_DELAY = 500000;
 const int WHITE_THRESHOLD = 255/2;
 // This number of white pixels is required for the bot to move
 const int STOP_COUNT = (IMAGE_SIZE_X / SAMPLE_STEPS);
-// The following are PID constants. Their sum should NEVER excede 1.
+// The following are PID constants. Their sum should probably not excede 1.
 const int K_P = 0.5;
 const int K_I = 0.2;
+const int K_D = 0.3;
 
 void follow_line();
 

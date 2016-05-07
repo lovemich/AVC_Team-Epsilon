@@ -8,24 +8,8 @@
 void follow_line() {
   int integral = 0;
   for (int i = 0; true; i++) {
-    take_picture();
     int white_count = 0;
-    int error = 0;
-    // Get pixels from across the entire image, not just one line
-    for (int x = 0; x < IMAGE_SIZE_X; x += SAMPLE_STEPS) {
-      for (int y = 0; y < IMAGE_SIZE_Y; y += SAMPLE_STEPS) {
-        int pixel_value = get_pixel(y, x, COLOR_WHITE);
-        // Check if pixel is white
-        if (pixel_value > STOP_THRESHOLD) {
-          // Add to counter if a pixel is 'white enough' to be part of a line
-          white_count++;
-          // Now weigh the pixel into the error
-          // I'm assuming y increases downwards when weighing
-          weight = y > (IMAGE_SIZE_Y / 2) ? 2 : 1;
-          error += (i - IMAGE_SIZE_X / 2) * weight;
-        }
-      }
-    }
+    int error = sample_image(white_count);
     // Break if there are not enough 'line worthy' pixels
     if (white_count < STOP_COUNT) {
       break;
@@ -47,4 +31,29 @@ void follow_line() {
     Sleep(0, UPDATE_DELAY);
   }
   halt();
+}
+
+/**
+ * Samples a snapshot from the camera to retrieve the line following error
+ *
+ * @param white_count The number of white pixels detected, updated by reference.
+ * @return The line-following error in the image
+ */
+int sample_image(int &white_count) {
+  take_picture();
+  // Get pixels from across the entire image, not just one line
+  for (int x = 0; x < IMAGE_SIZE_X; x += SAMPLE_STEPS) {
+    for (int y = 0; y < IMAGE_SIZE_Y; y += SAMPLE_STEPS) {
+      int pixel_value = get_pixel(y, x, COLOR_WHITE);
+      // Check if pixel is white
+      if (pixel_value > STOP_THRESHOLD) {
+        // Add to counter if a pixel is 'white enough' to be part of a line
+        white_count++;
+        // Now weigh the pixel into the error
+        // I'm assuming y increases downwards when weighing
+        weight = y > (IMAGE_SIZE_Y / 2) ? 2 : 1;
+        error += (i - IMAGE_SIZE_X / 2) * weight;
+      }
+    }
+  }
 }

@@ -4,7 +4,7 @@
 extern "C" {
   int init(); // InitHardware()
   int read_analog(int ch_adc); // ReadAnalog(int ch_adc)
-  int set_motor(int ch_motor, int dir, int speed);
+  int set_motor(int ch_motor, int speed);
   int Sleep(int sec, int usec);
   int take_picture();
   int get_pixel(int row, int col, int color);

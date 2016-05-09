@@ -15,12 +15,10 @@ static int speed_delta = 0;
  * Sets the motor speed for both motors
  */
 void move() {
-  int left_direction = (speed_base - speed_delta) >= 0 ? 1 : 2;
-  int right_direction = (speed_base + speed_delta) >= 0 ? 1 : 2;
-  int left_speed = abs(speed_base - speed_delta);
-  int right_speed = abs(speed_base + speed_delta);
-  set_motor(MOTOR_LEFT,  left_direction,  left_speed);
-  set_motor(MOTOR_RIGHT,  right_direction,  right_speed);
+  int left_speed = speed_base - speed_delta;
+  int right_speed = speed_base + speed_delta;
+  set_motor(MOTOR_LEFT,  left_speed);
+  set_motor(MOTOR_RIGHT,  right_speed);
 }
 
 /**

@@ -26,19 +26,15 @@ void move() {
  * towards left.
  */
 void turn(int amount) {
-  // Make sure the difference limit is not violated
-  if (DELTA_MAX < abs(amount)) {
-    amount = sign(amount) * DELTA_MAX;
-  }
   // Make sure the speed limit is not violated
-  int left = speed_base - amount;
-  int right = speed_base + amount;
-  if (left < -SPEED_MAX || left > SPEED_MAX || right < -SPEED_MAX || right > SPEED_MAX) {
+  int left_speed = speed_base - amount;
+  int right_speed = speed_base + amount;
+  if (left_speed < -SPEED_MAX || left_speed > SPEED_MAX || right_speed < -SPEED_MAX || right_speed > SPEED_MAX) {
     amount = sign(amount) * (SPEED_MAX - speed_base);
   }
   // Actually update the turning now
   speed_delta = amount;
-  printf("Turning by %i", amount);
+  printf("Turning by %i\n", amount);
   move();
 }
 

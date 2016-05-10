@@ -18,7 +18,7 @@ void open_gate() {
   // Sends the request to open the gate
   send_to_server(request);
   // Receives the password from the server
-  receive_from_server(password)
+  receive_from_server(password);
   // Sends the password for the gate
   send_to_server(password);
 }

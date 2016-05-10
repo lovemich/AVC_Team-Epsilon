@@ -20,7 +20,7 @@ void follow_line() {
     int error = sample_image(white_count);
     // Break if there are not enough 'line worthy' pixels
     if (white_count < STOP_COUNT) {
-      break;
+      //break;
     }
     // Calculate how much to turn by
     int pixels_x = IMAGE_SIZE_X / SAMPLE_STEPS;

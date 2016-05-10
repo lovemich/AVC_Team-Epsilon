@@ -1,4 +1,5 @@
 #include <sys/time.h>
+#include <stdio.h>
 
 #include "linefollow.h"
 #include "movement.h"
@@ -59,7 +60,7 @@ int sample_image(int &white_count) {
   // Get pixels from across the entire image, not just one line
   for (int x = 0; x < IMAGE_SIZE_X; x += SAMPLE_STEPS) {
     for (int y = 0; y < IMAGE_SIZE_Y; y += SAMPLE_STEPS) {
-      int pixel_value = get_pixel(y, x, COLOR_WHITE);
+      int pixel_value = get_pixel(x, y, COLOR_WHITE);
       // Check if pixel is white
       if (pixel_value > WHITE_THRESHOLD) {
         // Add to counter if a pixel is 'white enough' to be part of a line

@@ -9,6 +9,7 @@
  * Makes the robot attempt to follow a line, halting should it lose it.
  */
 void follow_line() {
+  int movement = 0;
   int integral = 0;
   int previous_error = 0;
   timeval prev_time;
@@ -20,10 +21,8 @@ void follow_line() {
     int error = sample_image(white_count);
     // Break if there are not enough 'line worthy' pixels
     if (white_count < STOP_COUNT) {
-      reset_turn();
       set_speed(-SPEED_DEF / 2);
-      move();
-      //turn(-speed_delta);
+      turn(-movement);
       gettimeofday(&prev_time, nullptr);
       Sleep(0, 100000);
       continue;
@@ -39,9 +38,8 @@ void follow_line() {
     gettimeofday(&curr_time, nullptr);
     long d_sec = (curr_time.tv_sec - prev_time.tv_sec);
     double d_time = (curr_time.tv_usec - prev_time.tv_usec) / 1000000.0 + d_sec;
-    int derivative = (error - previous_error) / d_time;
+    int derivative = (proportional_error - previous_error) / d_time;
     prev_time = curr_time;
-    int movement;
     // Start with the proportional component;
     movement = proportional_error * K_P;
     // Add the integral component
@@ -50,6 +48,8 @@ void follow_line() {
     movement += derivative * K_D;
     // Update integral component
     integral += proportional_error;
+    // Store previous error
+    previous_error = proportional_error;
     // Turn
     turn(movement);
   }

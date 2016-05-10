@@ -7,7 +7,7 @@
 #include "util.h"
 
 // Speed is 100% at 255
-static int speed_base = SPEED_MAX / 4;
+static int speed_base = SPEED_DEF;
 // Negative speed_delta gives
 static int speed_delta = 0;
 
@@ -17,6 +17,7 @@ static int speed_delta = 0;
 void move() {
   int left_speed = speed_base - speed_delta;
   int right_speed = speed_base + speed_delta;
+  printf("Movement L:R = %i : %i", left_speed, right_speed);
   set_motor(MOTOR_LEFT,  left_speed);
   set_motor(MOTOR_RIGHT,  right_speed);
 }
@@ -30,7 +31,7 @@ void turn(int amount) {
   int left_speed = speed_base - amount;
   int right_speed = speed_base + amount;
   if (left_speed < -SPEED_MAX || left_speed > SPEED_MAX || right_speed < -SPEED_MAX || right_speed > SPEED_MAX) {
-    amount = sign(amount) * (SPEED_MAX - speed_base);
+    //amount = sign(amount) * (SPEED_MAX - speed_base);
   }
   // Actually update the turning now
   speed_delta = amount;

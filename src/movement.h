@@ -5,6 +5,7 @@ const int MOTOR_LEFT = 1;
 const int MOTOR_RIGHT = 2;
 
 const int SPEED_MAX = 255;
+const int SPEED_DEF = 60;
 
 void move();
 void turn(int amount);

@@ -20,11 +20,19 @@ void follow_line() {
     int error = sample_image(white_count);
     // Break if there are not enough 'line worthy' pixels
     if (white_count < STOP_COUNT) {
-      //break;
+      reset_turn();
+      set_speed(-SPEED_DEF / 2);
+      move();
+      //turn(-speed_delta);
+      gettimeofday(&prev_time, nullptr);
+      Sleep(0, 100000);
+      continue;
+    } else {
+      set_speed(SPEED_DEF);
     }
     // Calculate how much to turn by
     int pixels_x = IMAGE_SIZE_X / SAMPLE_STEPS;
-    int pixels_y = (3 * (IMAGE_SIZE_Y / 2)) / SAMPLE_STEPS;
+    int pixels_y = IMAGE_SIZE_Y / SAMPLE_STEPS;
     int proportional_error = error / (pixels_x * pixels_y);
     int proportional_integral = i == 0 ? 0 : integral / i;
     timeval curr_time;
@@ -66,9 +74,7 @@ int sample_image(int &white_count) {
         // Add to counter if a pixel is 'white enough' to be part of a line
         white_count++;
         // Now weigh the pixel into the error
-        // I'm assuming y increases downwards when weighing
-        int weight = y > (IMAGE_SIZE_Y / 2) ? 2 : 1;
-        error += (x - IMAGE_SIZE_X / 2) * weight;
+        error += (x - IMAGE_SIZE_X / 2);
       }
     }
   }

@@ -14,10 +14,9 @@ void stop(int signum) {
 }
 
 int main() {
-  signal(SIGINT, stop);
   init();
+  signal(SIGINT, stop);
   open_gate();
   follow_line();
   return 0;
 }
-

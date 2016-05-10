@@ -102,7 +102,7 @@ Group Goal: Code done for quad 1
 | Michael | Start developing a way to complete the maze |
 | Devon   | Keep working on code for line following and add details for running code on readme |
 | Lavanya | More progress report/help with hardware |
-| Brandon | Check progress plan for next week |
+| Brandon | Check group's progress on the progress report/add week four plan |
 | ...      | ... |
 Group Goal: Quadrant 1 completed/code done for quad 2
 
@@ -111,11 +111,11 @@ Group Goal: Quadrant 1 completed/code done for quad 2
 | Person | Task |
 | :------------ |:---------------:| 
 | Lewis   | Have Hardware for quad 2 ready for testing | 
-| Logan   | Countine with help coding with line following code|
-| Michael | Layout the google doc AVC report and check grammer/continue to work out gate issues  |
+| Logan   | Continue with help coding with line following code|
+| Michael | Continue to work out gate issues |
 | Devon   | Have line following code tested and start fixing bugs |
-| Lavanya | Work on the Method section of the AVC progess report|
-| Brandon | Do the Abstract section of the AVC progess report |
+| Lavanya | Help with hardware/update readme documentation |
+| Brandon | Update weekly planner/Help tune AVC |
 | ...      | ... |
 Group Goal: Finish progress report/Hardware done for Quad 2
 

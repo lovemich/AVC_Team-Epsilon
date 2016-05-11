@@ -1,9 +1,11 @@
 #include <sys/time.h>
 #include <stdio.h>
+#include <cmath>
 
 #include "linefollow.h"
 #include "movement.h"
 #include "extern.h"
+#include "util.h"
 
 /**
  * Makes the robot attempt to follow a line, halting should it lose it.
@@ -21,10 +23,13 @@ void follow_line() {
     int error = sample_image(white_count);
     // Break if there are not enough 'line worthy' pixels
     if (white_count < STOP_COUNT) {
-      set_speed(-SPEED_DEF / 2);
-      turn(-movement);
+      set_speed(-SPEED_DEF);
+      //turn(-movement);
+      reset_turn();
+      move();
       gettimeofday(&prev_time, nullptr);
-      Sleep(0, 100000);
+      Sleep(0, REVERSE_DELAY);
+      i--;
       continue;
     } else {
       set_speed(SPEED_DEF);
@@ -32,7 +37,7 @@ void follow_line() {
     // Calculate how much to turn by
     int pixels_x = IMAGE_SIZE_X / SAMPLE_STEPS;
     int pixels_y = IMAGE_SIZE_Y / SAMPLE_STEPS;
-    int proportional_error = error / (pixels_x * pixels_y);
+    int proportional_error = error / (pow(pixels_x, 2) * pixels_y);
     int proportional_integral = i == 0 ? 0 : integral / i;
     timeval curr_time;
     gettimeofday(&curr_time, nullptr);
@@ -74,7 +79,7 @@ int sample_image(int &white_count) {
         // Add to counter if a pixel is 'white enough' to be part of a line
         white_count++;
         // Now weigh the pixel into the error
-        error += (x - IMAGE_SIZE_X / 2);
+        error += sign(x - IMAGE_SIZE_X / 2) * pow((x - IMAGE_SIZE_X / 2), 2);
       }
     }
   }

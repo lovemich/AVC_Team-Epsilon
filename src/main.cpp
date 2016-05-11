@@ -17,6 +17,7 @@ int main() {
   init();
   signal(SIGINT, stop);
   open_gate();
+  Sleep(0, 500000);
   follow_line();
   return 0;
 }

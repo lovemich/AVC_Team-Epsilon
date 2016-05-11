@@ -5,3 +5,5 @@ build/
 *.so
 # The compiled file
 main
+# Editor temp files
+*~

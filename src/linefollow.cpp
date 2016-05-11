@@ -43,6 +43,7 @@ void follow_line() {
     gettimeofday(&curr_time, nullptr);
     long d_sec = (curr_time.tv_sec - prev_time.tv_sec);
     double d_time = (curr_time.tv_usec - prev_time.tv_usec) / 1000000.0 + d_sec;
+    printf("Iteration took %f seconds", d_time);
     int derivative = (proportional_error - previous_error) / d_time;
     prev_time = curr_time;
     // Start with the proportional component;

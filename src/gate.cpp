@@ -12,13 +12,14 @@ char password[24];
 /**
  * Sends a request to the gate server to open the gate.
  */
-void open_gate() {
-  // Establishes a connection to the gate's server
-  connect_to_server(ip, port);
-  // Sends the request to open the gate
-  send_to_server(request);
-  // Receives the password from the server
-  receive_from_server(password);
-  // Sends the password for the gate
-  send_to_server(password);
+void open_gate()
+{
+    // Establishes a connection to the gate's server
+    connect_to_server(ip, port);
+    // Sends the request to open the gate
+    send_to_server(request);
+    // Receives the password from the server
+    receive_from_server(password);
+    // Sends the password for the gate
+    send_to_server(password);
 }

@@ -1,6 +1,6 @@
 # AVC_Team-Epsilon
 Team Epsilon's AVC repository.
-RPi ip: 10.140.195.125
+RPi ip: 10.140.93.39
 
 ## Running the code
 ### Clone the repository if necessary.

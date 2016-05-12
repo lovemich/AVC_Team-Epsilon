@@ -7,7 +7,7 @@ const int IMAGE_SIZE_Y = 240;
 const int SAMPLE_STEPS = 5;
 const int COLOR_WHITE = 3;
 // The time before the next update, in microseconds
-// Cannot exceed 999999μs
+// Cannot exceed 999999μ
 const int UPDATE_DELAY = 1000;
 const int REVERSE_DELAY = 50000;
 // A pixel is considered white (a line) if it exceeds this value

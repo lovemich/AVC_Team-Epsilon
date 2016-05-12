@@ -26,6 +26,7 @@ void follow_line()
         int white_count = 0;
         int error = sample_image(white_count);
 
+        #ifndef NOREVERSE
         // Try reverse if line is lost
         if (white_count < STOP_COUNT)
         {
@@ -43,7 +44,12 @@ void follow_line()
             // This is here to make the robot go forward after reversing
             set_speed(SPEED_DEF);
         }
+        #endif
 
+        #ifdef NOREVERSE
+        if (white_count >= STOP_COUNT) {
+	#endif
+	   
         // Calculate how much to turn by
         int pixels_x = IMAGE_SIZE_X / SAMPLE_STEPS;
         int pixels_y = IMAGE_SIZE_Y / SAMPLE_STEPS;
@@ -76,9 +82,16 @@ void follow_line()
         integral += proportional_error;
         // Store previous error for the derivative
         previous_error = proportional_error;
-
-        // Turn
-        turn(movement);
+	
+	// Turn
+	turn(movement);
+	
+	#ifdef NOREVERSE
+	} else {
+	    turn(movement * 2);
+	    gettimeofday(&prev_time, nullptr);
+	}
+        #endif
     }
 }
 

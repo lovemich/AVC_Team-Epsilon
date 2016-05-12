@@ -18,7 +18,9 @@ int main()
 {
     init();
     signal(SIGINT, stop);
-    open_gate();
+    #ifndef NOGATE
+        open_gate();
+    #endif
     Sleep(0, 500000);
     follow_line();
     return 0;

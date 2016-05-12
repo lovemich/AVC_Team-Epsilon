@@ -1,5 +1,6 @@
 C = g++ -std=c++0x
 FLAGS  = -Wall -Wextra -MMD -MP
+DEFINE =
 LIB = -lE101
 
 BIN = main
@@ -28,7 +29,7 @@ $(BIN): $(OBJ)
 	$(C) -o $(BIN) $(OBJ) $(LIB)
 
 build/%.o: src/%.cpp | build/
-	$(C) -c $< -o $@ $(FLAGS)
+	$(C) -c $< -o $@ $(FLAGS) $(DEFINE)
 
 build/:
 	mkdir -p ./build

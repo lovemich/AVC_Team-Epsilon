@@ -22,7 +22,7 @@ void follow_line()
     for (int i = 0; true; i++)
     {
         // Delay slightly before next iteration
-        Sleep(0, UPDATE_DELAY);
+        //Sleep(0, UPDATE_DELAY);
         LineInfo line;
         int error = sample_image(line);
 
@@ -31,6 +31,7 @@ void follow_line()
         {
             set_speed(-SPEED_DEF);
             reset_turn();
+            //turn(sign(previous_error) * SPEED_DEF * 1);
             move();
             // We need to get time here as to not mess with the next
             // iteration's derivative
@@ -43,7 +44,7 @@ void follow_line()
             // This is here to make the robot go forward after reversing
             set_speed(SPEED_DEF);
         }
-	   
+
         // Calculate how much to turn by
         int pixels_x = IMAGE_SIZE_X / SAMPLE_STEPS;
         int pixels_y = IMAGE_SIZE_Y / SAMPLE_STEPS;
@@ -76,7 +77,7 @@ void follow_line()
         integral += proportional_error;
         // Store previous error for the derivative
         previous_error = proportional_error;
-	
+
 	// Turn
 	turn(movement);
     }
@@ -91,6 +92,7 @@ void follow_line()
 int sample_image(LineInfo &line)
 {
     int error = 0;
+    line.white_count = 0;
     take_picture();
 
     // Get pixels from across the entire image, not just one line

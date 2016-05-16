@@ -19,8 +19,21 @@ const double K_P = 1;
 const double K_I = 0.05;
 const double K_D = 0.2;
 
+struct LineInfo 
+{
+   // Compass coordinates
+   int north_west;
+   int north;
+   int north_east;
+   int south_west;
+   int south;
+   int south_east;
+   // Other info
+   int white_count;
+};
+
 void follow_line();
-int sample_image(int &white_count);
+int sample_image(LineInfo &details);
 
 #endif
 

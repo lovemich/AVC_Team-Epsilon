@@ -23,11 +23,11 @@ void follow_line()
     {
         // Delay slightly before next iteration
         Sleep(0, UPDATE_DELAY);
-        int white_count = 0;
-        int error = sample_image(white_count);
+        LineInfo line;
+        int error = sample_image(line);
 
         // Try reverse if line is lost
-        if (white_count < STOP_COUNT)
+        if (line.white_count < STOP_COUNT)
         {
             set_speed(-SPEED_DEF);
             reset_turn();
@@ -88,7 +88,7 @@ void follow_line()
  * @param white_count The number of white pixels detected, updated by reference.
  * @return The line-following error in the image
  */
-int sample_image(int &white_count)
+int sample_image(LineInfo &line)
 {
     int error = 0;
     take_picture();
@@ -104,7 +104,7 @@ int sample_image(int &white_count)
             {
                 // Add to counter if a pixel is 'white enough' to be part of a
                 // line
-                white_count++;
+                line.white_count++;
                 // Now weigh the pixel into the error
                 error += sign(x - IMAGE_SIZE_X / 2) * pow((x - IMAGE_SIZE_X / 2), 2);
             }

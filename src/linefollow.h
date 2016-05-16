@@ -18,6 +18,8 @@ const int STOP_COUNT = (IMAGE_SIZE_X / SAMPLE_STEPS) * 1.5;
 const double K_P = 1;
 const double K_I = 0.05;
 const double K_D = 0.2;
+// An extra scaling constant applied prior to PID
+const double SCALE_POW = 2;
 
 struct LineInfo 
 {

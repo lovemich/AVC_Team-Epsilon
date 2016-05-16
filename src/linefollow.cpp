@@ -48,7 +48,7 @@ void follow_line()
         int pixels_x = IMAGE_SIZE_X / SAMPLE_STEPS;
         int pixels_y = IMAGE_SIZE_Y / SAMPLE_STEPS;
         // Doing Proportional
-        int proportional_error = error / (pow(pixels_x, 2) * pixels_y);
+        int proportional_error = error / (pow(pixels_x, SCALE_POW) * pixels_y);
         // Doing Integral
         int proportional_integral = i == 0 ? 0 : integral / i;
 
@@ -106,7 +106,7 @@ int sample_image(LineInfo &line)
                 // line
                 line.white_count++;
                 // Now weigh the pixel into the error
-                error += sign(x - IMAGE_SIZE_X / 2) * pow((x - IMAGE_SIZE_X / 2), 2);
+                error += sign(x - IMAGE_SIZE_X / 2) * pow((x - IMAGE_SIZE_X / 2), SCALE_POW);
             }
         }
     }

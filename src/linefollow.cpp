@@ -92,6 +92,7 @@ void follow_line()
 
 void follow_square_line() 
 {
+    halt();
     while (true) 
     {
         LineInfo line;

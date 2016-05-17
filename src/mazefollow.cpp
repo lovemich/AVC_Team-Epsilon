@@ -3,7 +3,7 @@
 #include <cmath>
 #include <string.h>
 
-#include "linefollow.h"
+#include "mazefollow.h"
 #include "movement.h"
 #include "extern.h"
 #include "util.h"
@@ -11,35 +11,33 @@
 void follow_wall(){
   
   /**
-	 * Reads data from the IR sensors,
-	 * stores the values in 3 variables
-	 * and adjusts motors accordingly
-	 */
-	
+   * Reads data from the IR sensors,
+   * stores the values in 3 variables
+   * and adjusts motors accordingly
+   */
 	int frontVal = 0;
 	int leftVal = 0;
 	int rightVal = 0;
 	while true{
-		frontVal = get_sensor_average(, int total)
-		// While there is room in front
-		while (frontVal > 0){
+		frontVal = get_sensor_average(FRONT_PIN, TESTS);
+		leftVal = get_sensor_average(LEFT_PIN, TESTS);
+		rightVal = get_sensor_average(RIGHT_PIN, TESTS);
+		// If there is room on the left
+		if (leftVal > LEFT_MIN){
+			turn(-1 * SHARP_TURN);
+		}
+		// If there is room at the front
+		else if (frontVal > FRONT_MIN){
 			move();
-			// Checks left and right side for room
-			leftVal = get_sensor_average(L, 5);
-			rightVal = get_sensor_average(R, 5);
-			//If there is room on the left
-			if (leftVal > 0){
-				turn(-10);
-			}
-			// If there is room on the right
-			else if (rightVal > 0){
-				turn(10);
-			}
+		}
+		// If there is room on the right
+		else if (rightVal > RIGHT_MIN){
+			turn(SHARP_TURN);
 		}
 		// If there is no room to the front or either side
-		while ((frontVal <= 0) && (leftVal <= 0) && (rightVal <= 0)){
+		else{
 			//Reverse
 		}
 	}
-	}
+	
 }

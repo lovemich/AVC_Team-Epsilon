@@ -31,7 +31,6 @@ void follow_line()
         if (line.compass[3] > 0 && line.compass[4] > 0 && line.compass[5] > 0 &&
             line.compass[0] + line.compass[1] + line.compass[2] == 0)
 	{
-            printf("TOP: %i BOTTOM: %i", line.compass[0] + line.compass[1] + line.compass[2], line.compass[6]+line.compass[7]+line.compass[8]);
 	    break;
 	}
 
@@ -73,7 +72,6 @@ void follow_line()
         double d_time = d_usec / 1000000.0 + d_sec;
         int derivative = (proportional_error - previous_error) / d_time;
         prev_time = curr_time;
-        printf("Iteration took %f seconds\n", d_time);
 
         // Now to compile all the calculations
         // Start with the proportional component;

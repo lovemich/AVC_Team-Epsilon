@@ -18,7 +18,7 @@ void move()
 {
     int left_speed = speed_base - speed_delta;
     int right_speed = speed_base + speed_delta;
-    printf("Movement L:R = %i : %i", left_speed, right_speed);
+    printf("Movement L:R = %i : %i\n", left_speed, right_speed);
     set_motor(MOTOR_LEFT,  left_speed);
     set_motor(MOTOR_RIGHT,  right_speed);
 }
@@ -41,7 +41,6 @@ void turn(int amount)
     
     // Actually update the turning now
     speed_delta = amount;
-    printf("Turning by %i\n", amount);
     move();
 }
 

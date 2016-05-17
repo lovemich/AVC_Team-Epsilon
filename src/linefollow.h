@@ -14,6 +14,10 @@ const int REVERSE_DELAY = 20000;
 const int WHITE_THRESHOLD = 125;
 // This number of white pixels is required for the bot to move
 const int STOP_COUNT = (IMAGE_SIZE_X / SAMPLE_STEPS) * 3;
+// The thresholds for the IR sensors
+const int F = 50;
+const int L = 50;
+const int R = 50;
 // The following are PID constants.
 const double K_P = 1.55;
 const double K_I = 0.01;

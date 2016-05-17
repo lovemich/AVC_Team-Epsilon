@@ -131,37 +131,3 @@ int sample_image(LineInfo &line)
     return error;
 }
 
-void follow_wall(){
-	/**
-	 * Reads data from the IR sensors,
-	 * stores the values in 3 variables
-	 * and adjusts motors accordingly
-	 */
-	
-	int frontVal = 0;
-	int leftVal = 0;
-	int rightVal = 0;
-	while true{
-		frontVal = read_analog(F);
-		// While there is room in front
-		while (frontVal > 0){
-			move();
-			// Checks left and right side for room
-			leftVal = read_analog(L);
-			rightVal = read_analog(R);
-			//If there is room on the left
-			if (leftVal > 0){
-				turn(-10);
-			}
-			// If there is room on the right
-			else if (rightVal > 0){
-				turn(10);
-			}
-		}
-		// If there is no room to the front or either side
-		while ((frontVal <= 0) && (leftVal <= 0) && (rightVal <= 0)){
-			//Reverse
-		}
-	}
-	}
-}

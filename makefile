@@ -9,11 +9,14 @@ SRC = $(shell find ./src/ -type f -name '*.cpp')
 OBJ = $(patsubst ./src/%.cpp, build/%.o, $(SRC))
 DEP = $(patsubst ./src/%.cpp, build/%.d, $(SRC))
 
-.PHONY: nolink run sudo_run clean
+.PHONY: nolink all run sudo_run clean
 
 default: $(BIN)
 
 nolink: $(OBJ)
+
+all: all.cpp | build/
+	$(C) -o $(BIN) all.cpp $(LIB) -Wall -Wextra $(DEFINE)
 
 run: $(BIN)
 	./$(BIN)

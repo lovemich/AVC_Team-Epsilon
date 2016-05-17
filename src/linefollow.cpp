@@ -92,8 +92,19 @@ void follow_line()
 
 void follow_square_line() 
 {
-    halt();
+    while (true) 
+    {
+        LineInfo line;
+        clear_line(line);
+        sample_image(line);
+    }
 }
+
+void clear_line(LineInfo &line) 
+{
+    line = {{0,0,0,0,0,0,0,0,0}, 0};
+}
+
 
 /**
  * Samples a snapshot from the camera to retrieve the line following error

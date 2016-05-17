@@ -29,7 +29,7 @@ void follow_line()
        
         // Check if we have reached the end of the curvy maze
         if (line.compass[0] + line.compass[1] + line.compass[2] == 0 &&
-	    line.compass[3] + line.compass[4] + line.compass[5] > 0)
+	    line.compass[6] + line.compass[7] + line.compass[8] > 0)
 	{
 	    break;
 	}
@@ -121,7 +121,7 @@ int sample_image(LineInfo &line)
                 // Add to counter if a pixel is 'white enough' to be part of a
                 // line
                 line.white_count++;
-	        int location = x / (IMAGE_SIZE_X / 3) + 1 + 3 * (y / (IMAGE_SIZE_Y / 3));
+	        int location = x / (IMAGE_SIZE_X / 3) + 3 * (y / (IMAGE_SIZE_Y / 3));
 	        line.compass[location]++;
                 // Now weigh the pixel into the error
                 error += sign(x - IMAGE_SIZE_X / 2) * pow((x - IMAGE_SIZE_X / 2), SCALE_POW);

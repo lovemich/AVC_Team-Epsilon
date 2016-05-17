@@ -24,13 +24,14 @@ void follow_line()
     {
         // Delay slightly before next iteration
         //Sleep(0, UPDATE_DELAY);
-        LineInfo line;
+        LineInfo line = {{0,0,0,0,0,0,0,0,0},0};
         int error = sample_image(line);
-       
+
         // Check if we have reached the end of the curvy maze
-        if (line.compass[0] + line.compass[1] + line.compass[2] == 0 &&
-	    line.compass[6] + line.compass[7] + line.compass[8] > 0)
+        if (line.compass[3] > 0 && line.compass[4] > 0 && line.compass[5] > 0 &&
+            line.compass[0] + line.compass[1] + line.compass[2] == 0)
 	{
+            printf("TOP: %i BOTTOM: %i", line.compass[0] + line.compass[1] + line.compass[2], line.compass[6]+line.compass[7]+line.compass[8]);
 	    break;
 	}
 
@@ -105,8 +106,6 @@ void follow_square_line()
 int sample_image(LineInfo &line)
 {
     int error = 0;
-    memset(line.compass, 0, 9);
-    line.white_count = 0;
     take_picture();
 
     // Get pixels from across the entire image, not just one line
@@ -130,4 +129,3 @@ int sample_image(LineInfo &line)
     }
     return error;
 }
-

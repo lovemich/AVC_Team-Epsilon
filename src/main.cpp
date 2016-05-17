@@ -23,5 +23,6 @@ int main()
     #endif
     Sleep(0, 500000);
     follow_line();
+    follow_square_line();
     return 0;
 }

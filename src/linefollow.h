@@ -24,18 +24,15 @@ const double SCALE_POW = 2;
 struct LineInfo 
 {
    // Compass coordinates
-   int north_west;
-   int north;
-   int north_east;
-   int south_west;
-   int south;
-   int south_east;
+   // Goes west to east for each row (including center row)
+   int compass[9];
    // Other info
    int white_count;
 };
 
 void follow_line();
-int sample_image(LineInfo &details);
+void follow_square_line();
+int sample_image(LineInfo &line);
 
 #endif
 

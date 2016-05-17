@@ -1,6 +1,7 @@
 #include <sys/time.h>
 #include <stdio.h>
 #include <cmath>
+#include <string.h>
 
 #include "linefollow.h"
 #include "movement.h"
@@ -25,6 +26,13 @@ void follow_line()
         //Sleep(0, UPDATE_DELAY);
         LineInfo line;
         int error = sample_image(line);
+       
+        // Check if we have reached the end of the curvy maze
+        if (line.compass[0] + line.compass[1] + line.compass[2] == 0 &&
+	    line.compass[3] + line.compass[4] + line.compass[5] > 0)
+	{
+	    break;
+	}
 
         // Try reverse if line is lost
         if (line.white_count < STOP_COUNT)
@@ -83,6 +91,11 @@ void follow_line()
     }
 }
 
+void follow_square_line() 
+{
+    halt();
+}
+
 /**
  * Samples a snapshot from the camera to retrieve the line following error
  *
@@ -92,6 +105,7 @@ void follow_line()
 int sample_image(LineInfo &line)
 {
     int error = 0;
+    memset(line.compass, 0, 9);
     line.white_count = 0;
     take_picture();
 
@@ -107,6 +121,8 @@ int sample_image(LineInfo &line)
                 // Add to counter if a pixel is 'white enough' to be part of a
                 // line
                 line.white_count++;
+	        int location = x / (IMAGE_SIZE_X / 3) + 1 + 3 * (y / (IMAGE_SIZE_Y / 3));
+	        line.compass[location]++;
                 // Now weigh the pixel into the error
                 error += sign(x - IMAGE_SIZE_X / 2) * pow((x - IMAGE_SIZE_X / 2), SCALE_POW);
             }

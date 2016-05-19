@@ -83,8 +83,8 @@ void follow_line()
         // Store previous error for the derivative
         previous_error = proportional_error;
 
-    // Turn
-    turn(movement);
+        // Turn
+        turn(movement);
     }
 }
 

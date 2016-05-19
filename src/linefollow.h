@@ -31,8 +31,8 @@ struct LineInfo
 
 void follow_line();
 void follow_square_line();
-void clear_line(LineInfo &line);
-int sample_image(LineInfo &line);
+inline int sample_image(LineInfo &line);
+inline int sample_pixel(LineInfo &line, int x, int y)
 
 #endif
 

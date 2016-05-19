@@ -4,6 +4,7 @@
 // Evaluates to 1 if postive, -1 if negative, and 0 if either 0
 #define sign(x) ((x > 0) - (x < 0))
 
+void stop(int signum);
 inline double get_seconds(timeval &curr_time);
 
 #endif

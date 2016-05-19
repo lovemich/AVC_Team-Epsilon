@@ -7,8 +7,9 @@ const int IMAGE_SIZE_Y = 240;
 const int SAMPLE_STEPS = 5;
 const int COLOR_WHITE = 3;
 // The time length of reverse, in microseconds
-// Cannot exceed 999999Î¼
+// Cannot exceed 999999Î
 const int REVERSE_DELAY = 20000;
+const int TURN_90_DELAY = 5000;
 // A pixel is considered white (a line) if it exceeds this value
 const int WHITE_THRESHOLD = 125;
 // This number of white pixels is required for the bot to move

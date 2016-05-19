@@ -21,6 +21,8 @@ void follow_line()
     // Initialize prev_time with the current time
     gettimeofday(&prev_time, nullptr);
 
+    set_speed(SPEED_DEF);
+
     for (int i = 0; true; i++)
     {
         int error = sample_image(line);
@@ -95,6 +97,8 @@ void follow_square_line()
     // Initialize prev_time with the current time
     gettimeofday(&prev_time, nullptr);
 
+    set_speed(SPEED_DEF);
+
     while (true)
     {
         int error = sample_image(line);
@@ -106,6 +110,11 @@ void follow_square_line()
             )
         {
             printf("Going square left\n");
+            set_speed(0);
+            turn(-255);
+            Sleep(0, TURN_90_DELAY);
+            set_speed(SPEED_DEF);
+            turn(0);
             break;
         }
         // Check right
@@ -117,6 +126,28 @@ void follow_square_line()
             )
         {
             printf("Going square right\n");
+            set_speed(0);
+            turn(255);
+            Sleep(0, TURN_90_DELAY);
+            set_speed(SPEED_DEF);
+            turn(0);
+            break;
+        }
+        // Check centre line stop
+        else if (
+            line.compass[0] + line.compass[1] +
+            line.compass[2] + line.compass[3] +
+            line.compass[5] + line.compass[6] +
+            line.compass[8] == 0 &&
+            line.compass[4] > 0 && line.compass[7] > 0
+            )
+        {
+            printf("Dead end! Do a barrel roll!\n");
+            set_speed(0);
+            turn(-255);
+            Sleep(0, TURN_90_DELAY * 2);
+            set_speed(SPEED_DEF);
+            turn(0);
             break;
         }
 

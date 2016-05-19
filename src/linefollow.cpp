@@ -22,17 +22,15 @@ void follow_line()
 
     for (int i = 0; true; i++)
     {
-        // Delay slightly before next iteration
-        //Sleep(0, UPDATE_DELAY);
-        LineInfo line = {{0,0,0,0,0,0,0,0,0},0};
+        clear_line(line);
         int error = sample_image(line);
 
         // Check if we have reached the end of the curvy maze
         if (line.compass[3] > 0 && line.compass[4] > 0 && line.compass[5] > 0 &&
             line.compass[0] + line.compass[1] + line.compass[2] == 0)
-	{
-	    break;
-	}
+        {
+            break;
+        }
 
         // Try reverse if line is lost
         if (line.white_count < STOP_COUNT)
@@ -85,15 +83,15 @@ void follow_line()
         // Store previous error for the derivative
         previous_error = proportional_error;
 
-	// Turn
-	turn(movement);
+    // Turn
+    turn(movement);
     }
 }
 
-void follow_square_line() 
+void follow_square_line()
 {
     halt();
-    while (true) 
+    while (true)
     {
         LineInfo line;
         clear_line(line);
@@ -101,7 +99,7 @@ void follow_square_line()
     }
 }
 
-void clear_line(LineInfo &line) 
+void clear_line(LineInfo &line)
 {
     line = {{0,0,0,0,0,0,0,0,0}, 0};
 }
@@ -130,8 +128,8 @@ int sample_image(LineInfo &line)
                 // Add to counter if a pixel is 'white enough' to be part of a
                 // line
                 line.white_count++;
-	        int location = x / (IMAGE_SIZE_X / 3) + 3 * (y / (IMAGE_SIZE_Y / 3));
-	        line.compass[location]++;
+                int location = x / (IMAGE_SIZE_X / 3) + 3 * (y / (IMAGE_SIZE_Y / 3));
+                line.compass[location]++;
                 // Now weigh the pixel into the error
                 error += sign(x - IMAGE_SIZE_X / 2) * pow((x - IMAGE_SIZE_X / 2), SCALE_POW);
             }

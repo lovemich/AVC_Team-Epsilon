@@ -13,6 +13,7 @@
  */
 void follow_line()
 {
+    LineInfo line;
     int movement = 0;
     int integral = 0;
     int previous_error = 0;
@@ -87,6 +88,7 @@ void follow_line()
 
 void follow_square_line()
 {
+    LineInfo line;
     int movement = 0;
     int previous_error = 0;
     timeval prev_time;

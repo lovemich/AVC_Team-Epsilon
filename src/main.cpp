@@ -4,6 +4,7 @@
 #include <csignal>
 
 #include "extern.h"
+#include "util.h"
 #include "gate.h"
 #include "linefollow.h"
 

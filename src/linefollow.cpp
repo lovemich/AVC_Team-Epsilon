@@ -33,12 +33,14 @@ void follow_line()
             line.compass[6] > 0 && line.compass[7] > 0 && line.compass[8] > 0
             )
         {
+            printf("ATTEMPT stop");
             break;
         }
 
         // Try reverse if line is lost
         if (line.white_count < STOP_COUNT)
         {
+            printf("ATTEMPT reverse");
             set_speed(-SPEED_DEF);
             reset_turn();
             //turn(sign(previous_error) * SPEED_DEF * 1);
@@ -48,11 +50,8 @@ void follow_line()
             gettimeofday(&prev_time, nullptr);
             Sleep(0, REVERSE_DELAY);
             i--;
-            continue;
-        }
-        else {
-            // This is here to make the robot go forward after reversing
             set_speed(SPEED_DEF);
+            continue;
         }
 
         // Calculate how much to turn by

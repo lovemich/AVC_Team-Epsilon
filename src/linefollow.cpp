@@ -33,14 +33,14 @@ void follow_line()
             line.compass[6] > 0 && line.compass[7] > 0 && line.compass[8] > 0
             )
         {
-            printf("ATTEMPT stop");
+            printf("ATTEMPT stop\n");
             break;
         }
 
         // Try reverse if line is lost
         if (line.white_count < STOP_COUNT)
         {
-            printf("ATTEMPT reverse");
+            printf("ATTEMPT reverse\n");
             set_speed(-SPEED_DEF);
             reset_turn();
             //turn(sign(previous_error) * SPEED_DEF * 1);

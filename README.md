@@ -154,7 +154,7 @@ Group Goal: Test for Quad 3/ Sensors start to be added
 #Week 6 
 | Person | Task |
 | :------------ |:---------------:|
-| Lewis   | Have hardware ready for section 4 asap ✔|
+| Lewis   | Have hardware ready for section 4 asap |
 | Logan   | Work on the maze code|
 | Michael | Come up with ideas to improve the look of the avc and create them|
 | Devon   | Have quad 4 at 100% working without interaction |

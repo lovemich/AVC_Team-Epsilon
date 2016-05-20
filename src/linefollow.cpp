@@ -30,7 +30,7 @@ void follow_line()
         // Check if we have reached the end of the curvy maze
         if (
             line.compass[0] + line.compass[1] + line.compass[2] == 0 &&
-            line.compass[3] > 0 && line.compass[4] > 0 && line.compass[5] > 0
+            line.compass[6] > 0 && line.compass[7] > 0 && line.compass[8] > 0
             )
         {
             break;
@@ -111,7 +111,7 @@ void follow_square_line()
         {
             printf("Going square left\n");
             set_speed(0);
-            turn(-255);
+            turn(-50);
             Sleep(0, TURN_90_DELAY);
             set_speed(SPEED_DEF);
             turn(0);
@@ -127,7 +127,7 @@ void follow_square_line()
         {
             printf("Going square right\n");
             set_speed(0);
-            turn(255);
+            turn(50);
             Sleep(0, TURN_90_DELAY);
             set_speed(SPEED_DEF);
             turn(0);
@@ -144,7 +144,7 @@ void follow_square_line()
         {
             printf("Dead end! Do a barrel roll!\n");
             set_speed(0);
-            turn(-255);
+            turn(-50);
             Sleep(0, TURN_90_DELAY * 2);
             set_speed(SPEED_DEF);
             turn(0);

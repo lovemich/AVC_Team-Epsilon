@@ -120,7 +120,7 @@ Group Goal: Quadrant 1 completed/code done for quad 2 ✔
 #Week 4
 | Person | Task |
 | :------------ |:---------------:|
-| Lewis   | Have Hardware for quad 2 ready for testing ✔|
+| Lewis   | Create a Battery Holder for the AVC ✔|
 | Logan   | Continue with help coding with maze code ✔|
 | Michael | Come with a method of mounting the IR sensors  |
 | Devon   | Have line following code tested and start fixing bugs ✔|
@@ -129,11 +129,21 @@ Group Goal: Quadrant 1 completed/code done for quad 2 ✔
 | ...  	| ... |
 Group Goal: Finish progress report/Hardware done for Quad 2 and line following code done 
 
+#Week 4 Review
+
+- Lewis has created a mount for the battery for the AVC, printed it and added it to the avc ✔
+- Logan is working on the maze code and coming up with ideas how deal with different challenges presented by the maze ✔
+- Michal helped a little with the hardware but didn't do his task that he was set 
+- Devon has sections 1 and 2 working 100% and has started work on section 3 ✔
+- Lavanya Helped tune the line folliwng code and helped update the readme documentation ✔
+- Brandon helped devon debug and suggeted different ideas on tunning values and how to deal with the bugs✔
+
+
 #Week 5
 | Person | Task |
 | :------------ |:---------------:|
-| Lewis   | Create Code to tell if it’s a dead end|
-| Logan   | Help Michael work on ideas to make AVC look better |
+| Lewis   | Create Code to tell if it’s a dead end & come up with ideas for the IR sensor mounts ✔|
+| Logan   | work on the maze code and create the start code for section 4 ✔|
 | Michael | Create/Print 3D models for AVC sensors|
 | Devon   | Have quad 1,2,3 at 100% working without interaction |
 | Lavanya | Code for maze dead backing up |
@@ -141,7 +151,17 @@ Group Goal: Finish progress report/Hardware done for Quad 2 and line following c
 | ...  	| ... |
 Group Goal: Test for Quad 3/ Sensors start to be added 
 
-- Week 6 Goal:Test Quad 3/ Start planning for quad 4
-- Week 7 Goal: Code for Quad 4 & Hardware
-- Week 8 Goal: Test everything fix bugs
-- Week 9 Goal: Have robot pass all quads
+#Week 6 
+| Person | Task |
+| :------------ |:---------------:|
+| Lewis   | Have hardware ready for section 4 asap |
+| Logan   | Work on the maze code|
+| Michael | Come up with ideas to improve the look of the avc and create them|
+| Devon   | Have quad 4 at 100% working without interaction |
+| Lavanya | Look into the idea of having a speaker and playing music on the avc |
+| Brandon | Work on section 4 code/help team mates with code understanding/help test|
+| ...  	| ... |
+Group Goal: Have everything ready to be tested for section 4!
+
+- Week 7 Goal: Show the AVC go through sections 1,2,3,4
+

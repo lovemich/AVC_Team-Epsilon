@@ -50,8 +50,11 @@ void follow_line()
             gettimeofday(&prev_time, nullptr);
             Sleep(0, REVERSE_DELAY);
             i--;
-            set_speed(SPEED_DEF);
             continue;
+        }
+        else 
+        {
+            set_speed(SPEED_DEF);
         }
 
         // Calculate how much to turn by

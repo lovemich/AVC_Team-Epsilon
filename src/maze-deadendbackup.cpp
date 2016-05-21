@@ -6,24 +6,22 @@
 
 void deadendbackup() 
 {
-  while (front<50 && left<50 && right<50)
+  while (front<50 && (left<50 || right<50))
   {
     set_motor(MOTOR_LEFT, (-SPEED_DEF));
     set_motor(MOTOR_RIGHT, (-SPEED_DEF));
   }
   
-  //int left_speed = SPEED_DEF - amount;
-  //int right_speed = SPEED_DEF + amount;
+  int left_speed = SPEED_DEF - amount;
+  int right_speed = SPEED_DEF + amount;
   
   if((left > 50))
   {
-  //something to make it turn left
-  set_motor(MOTOR_LEFT, //left_speed)
-  //right_motor
+  set_motor(MOTOR_LEFT, left_speed);
   }
   else if(right > 50)
   {
-  //something to make it turn right 
+  set_motor(MOTOR_RIGHT, right_speed);
   }
 
 }

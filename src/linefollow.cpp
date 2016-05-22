@@ -41,11 +41,34 @@ void follow_line()
         // Try reverse if line is lost
         if (line.white_count < STOP_COUNT)
         {
-            printf("ATTEMPT reverse %i : %i\n", line.white_count, STOP_COUNT);
-            set_speed(-SPEED_DEF);
-            reset_turn();
-            //turn(sign(previous_error) * SPEED_DEF * 1);
-            move();
+            if (line.east)
+            {
+                printf("ATTEMPT save right");
+                set_speed(0);
+                turn(90);
+                while (!line.north)
+                {
+                    sample_image(line);
+                }
+            }
+            else if (line.west)
+            {
+                printf("ATTEMPT save left");
+                set_speed(0);
+                turn(-90);
+                while (!line.north)
+                {
+                    sample_image(line);
+                }
+            }
+            else
+            {
+                printf("ATTEMPT reverse %i : %i\n", line.white_count, STOP_COUNT);
+                set_speed(-SPEED_DEF);
+                reset_turn();
+                //turn(sign(previous_error) * SPEED_DEF * 1);
+                move();
+            }
             // We need to get time here as to not mess with the next
             // iteration's derivative
             gettimeofday(&prev_time, nullptr);

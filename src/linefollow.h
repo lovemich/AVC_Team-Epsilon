@@ -21,11 +21,19 @@ const double K_D = 0.225;
 // An extra scaling constant applied prior to PID
 const double SCALE_POW = 2;
 
+const int NORTH = 0;
+const int EAST = 1;
+const int SOUTH = 2;
+const int WEST = 3;
 struct LineInfo
 {
     // Compass coordinates
     // Goes west to east for each row (including center row)
-    int compass[9];
+    // int compass[9];
+    bool north;
+    bool east;
+    bool south;
+    bool west;
     // Other info
     int white_count;
 };

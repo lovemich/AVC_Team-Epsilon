@@ -28,10 +28,11 @@ void follow_line()
         int error = sample_image(line);
 
         // Check if we have reached the end of the curvy maze
-        if (
-            line.compass[0] + line.compass[1] + line.compass[2] == 0 &&
-            line.compass[6] > 0 && line.compass[7] > 0 && line.compass[8] > 0
-            )
+        // if (
+        //     line.compass[0] + line.compass[1] + line.compass[2] == 0 &&
+        //     line.compass[6] > 0 && line.compass[7] > 0 && line.compass[8] > 0
+        //     )
+        if (!line.north && line.east && line.south && line.west)
         {
             printf("ATTEMPT stop %i : %i\n", line.white_count, STOP_COUNT);
             break;
@@ -52,7 +53,7 @@ void follow_line()
             i--;
             continue;
         }
-        else 
+        else
         {
             set_speed(SPEED_DEF);
         }
@@ -106,12 +107,13 @@ void follow_square_line()
         int error = sample_image(line);
 
         // Check left
-        if (
-            line.compass[0] + line.compass[6] +
-            line.compass[8] == 0 &&
-            line.compass[3] > 0 && line.compass[4] > 0 &&
-            line.compass[7] > 0
-            )
+        // if (
+        //     line.compass[0] + line.compass[6] +
+        //     line.compass[8] == 0 &&
+        //     line.compass[3] > 0 && line.compass[4] > 0 &&
+        //     line.compass[7] > 0
+        //     )
+        if (line.south && line.west)
         {
             printf("ATTEMPT Going square left\n");
             set_speed(0);
@@ -121,11 +123,12 @@ void follow_square_line()
             turn(0);
         }
         // Check right
-        else if (
-            line.compass[0] + line.compass[1] +
-            line.compass[6] == 0 &&
-            line.compass[7] > 0 && line.compass[8] > 0
-            )
+        // else if (
+        //     line.compass[0] + line.compass[1] +
+        //     line.compass[6] == 0 &&
+        //     line.compass[7] > 0 && line.compass[8] > 0
+        //     )
+        else if (!line.north && line.east && line.south && !line.west)
         {
             printf("ATTEMPT Going square right\n");
             set_speed(0);
@@ -135,13 +138,14 @@ void follow_square_line()
             turn(0);
         }
         // Check centre line stop
-        else if (
-            line.compass[0] + line.compass[1] +
-            line.compass[2] + line.compass[3] +
-            line.compass[5] + line.compass[6] +
-            line.compass[8] == 0 &&
-            line.compass[4] > 0 && line.compass[7] > 0
-            )
+        // else if (
+        //     line.compass[0] + line.compass[1] +
+        //     line.compass[2] + line.compass[3] +
+        //     line.compass[5] + line.compass[6] +
+        //     line.compass[8] == 0 &&
+        //     line.compass[4] > 0 && line.compass[7] > 0
+        //     )
+        if (!line.north && !line.east && line.south && !line.west)
         {
             printf("ATTEMPT Dead end! Do a barrel roll!\n");
             set_speed(0);
@@ -208,7 +212,8 @@ void follow_square_line()
  */
 inline int sample_image(LineInfo &line)
 {
-    line = {{0,0,0,0,0,0,0,0,0}, 0};
+    //line = {{0,0,0,0,0,0,0,0,0}, 0};
+    line = {false, false, false, false, 0};
 
     int error = 0;
     take_picture();
@@ -233,8 +238,27 @@ inline int sample_pixel(LineInfo &line, int x, int y)
         // Add to counter if a pixel is 'white enough' to be part of a
         // line
         line.white_count++;
-        int location = x / (IMAGE_SIZE_X / 3) + 3 * (y / (IMAGE_SIZE_Y / 3));
-        line.compass[location]++;
+        //int location = x / (IMAGE_SIZE_X / 3) + 3 * (y / (IMAGE_SIZE_Y / 3));
+        //line.compass[location]++;
+
+        if (y == 0)
+        {
+            line.north = true;
+        }
+        else if (y > IMAGE_SIZE_Y - SAMPLE_STEPS)
+        {
+            line.south = true;
+        }
+
+        if (x == 0)
+        {
+            line.west = true;
+        }
+        else if (x > IMAGE_SIZE_X - SAMPLE_STEPS)
+        {
+            line.east = true;
+        }
+
         // Now weigh the pixel into the error
         return sign(x - IMAGE_SIZE_X / 2) * pow((x - IMAGE_SIZE_X / 2), SCALE_POW);
     }

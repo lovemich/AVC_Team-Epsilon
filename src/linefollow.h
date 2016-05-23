@@ -29,18 +29,19 @@ const int WEST = 3;
 struct LineInfo
 {
     // Compass coordinates
-    // Goes west to east for each row (including center row)
-    // int compass[9];
     bool north;
     bool east;
     bool south;
     bool west;
+    // For knowing when to stop turning on square follow
+    int north_error;
     // Other info
     int white_count;
 };
 
 void follow_line();
 void follow_square_line();
+inline void square_line_rotate(bool start_on_line);
 inline int sample_image(LineInfo &line);
 inline int sample_pixel(LineInfo &line, int x, int y);
 

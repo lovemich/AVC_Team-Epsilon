@@ -26,16 +26,8 @@ void follow_line()
     for (int i = 0; true; i++)
     {
         int error = sample_image(line);
-        //printf(line.north ? "Line: N" : "Line:  ");
-        //printf(line.east ? "E" : " ");
-        //printf(line.south ? "S" : " ");
-        //printf(line.west ? "W\n" : "\n");
 
         // Check if we have reached the end of the curvy maze
-        // if (
-        //     line.compass[0] + line.compass[1] + line.compass[2] == 0 &&
-        //     line.compass[6] > 0 && line.compass[7] > 0 && line.compass[8] > 0
-        //     )
         if (!line.north && line.east && line.south && line.west)
         {
             printf("ATTEMPT stop\n");
@@ -134,64 +126,59 @@ void follow_square_line()
         int error = sample_image(line);
 
         // Check left
-        // if (
-        //     line.compass[0] + line.compass[6] +
-        //     line.compass[8] == 0 &&
-        //     line.compass[3] > 0 && line.compass[4] > 0 &&
-        //     line.compass[7] > 0
-        //     )
         if (line.south && line.west)
         {
-            printf("ATTEMPT Going square left\n");
+            printf("ATTEMPT Going square left");
+            printf(line.north ? " : line N" : " : line  ");
+            printf(line.east ? "E" : " ");
+            printf(line.south ? "S" : " ");
+            printf(line.west ? "W\n" : "\n");
             Sleep(0, REVERSE_DELAY);
             set_speed(0);
             turn(-TURN_90_SPEED);
-            Sleep(0, TURN_90_DELAY);
+            //Sleep(0, TURN_90_DELAY);
+            square_line_rotate(line.north);
             set_speed(SPEED_DEF);
             turn(0);
             Sleep(0, TURN_90_DELAY);
-            goto detected_line;
         }
         // Check right
-        // else if (
-        //     line.compass[0] + line.compass[1] +
-        //     line.compass[6] == 0 &&
-        //     line.compass[7] > 0 && line.compass[8] > 0
-        //     )
         else if (!line.north && line.east && line.south && !line.west)
         {
-            printf("ATTEMPT Going square right\n");
+            printf("ATTEMPT Going square right");
+            printf(line.north ? " : line N" : " : line  ");
+            printf(line.east ? "E" : " ");
+            printf(line.south ? "S" : " ");
+            printf(line.west ? "W\n" : "\n");
             Sleep(0, REVERSE_DELAY);
             set_speed(0);
             turn(TURN_90_SPEED);
-            Sleep(0, TURN_90_DELAY);
+            // Sleep(0, TURN_90_DELAY);
+            square_line_rotate(line.north);
             set_speed(SPEED_DEF);
             turn(0);
             Sleep(0, TURN_90_DELAY);
-            goto detected_line;
         }
-        // Check centre line stop
-        // else if (
-        //     line.compass[0] + line.compass[1] +
-        //     line.compass[2] + line.compass[3] +
-        //     line.compass[5] + line.compass[6] +
-        //     line.compass[8] == 0 &&
-        //     line.compass[4] > 0 && line.compass[7] > 0
-        //     )
-        if (!line.north && !line.east && line.south && !line.west)
+        // Check center line stop
+        else if (!line.north && !line.east && line.south && !line.west)
         {
-            printf("ATTEMPT Dead end! Do a barrel roll!\n");
+            printf("ATTEMPT Dead end! Do a barrel roll!");
+            printf(line.north ? " : line N" : " : line  ");
+            printf(line.east ? "E" : " ");
+            printf(line.south ? "S" : " ");
+            printf(line.west ? "W\n" : "\n");
             set_speed(0);
             turn(2*TURN_90_SPEED);
-            Sleep(0, TURN_90_DELAY * 2);
+            // Sleep(0, TURN_90_DELAY * 2);
+            square_line_rotate(false);
             set_speed(SPEED_DEF);
             turn(0);
         }
 
         // Try reverse if line is lost
-        if (line.white_count < STOP_COUNT)
+        else if (line.white_count < STOP_COUNT)
         {
-            printf("ATTEMPT reversing");
+            printf("ATTEMPT reversing\n");
             set_speed(-SPEED_DEF);
             reset_turn();
             //turn(sign(previous_error) * SPEED_DEF * 1);
@@ -206,8 +193,6 @@ void follow_square_line()
             // This is here to make the robot go forward after reversing
             set_speed(SPEED_DEF);
         }
-
-        detected_line:
 
         // Calculate how much to turn by
         int pixels_x = IMAGE_SIZE_X / SAMPLE_STEPS;
@@ -239,6 +224,31 @@ void follow_square_line()
     halt();
 }
 
+inline void square_line_rotate(bool start_on_line)
+{
+    int stage = start_on_line ? 0 : 1;
+    int direction = 0;
+    LineInfo line;
+    while (true)
+    {
+        sample_image(line);
+        int current_dir = sign(line.north_error);
+        if (stage == 0 && !line.north)
+        {
+            stage = 1;
+        }
+        else if (stage == 1 && line.north)
+        {
+            stage = 2;
+            direction = current_dir;
+        }
+        else if (stage == 2 && direction != current_dir)
+        {
+            break;
+        }
+    }
+}
+
 /**
  * Samples a snapshot from the camera to retrieve the line following error
  *
@@ -247,8 +257,7 @@ void follow_square_line()
  */
 inline int sample_image(LineInfo &line)
 {
-    //line = {{0,0,0,0,0,0,0,0,0}, 0};
-    line = {false, false, false, false, 0};
+    line = {false, false, false, false, 0, 0};
 
     int error = 0;
     take_picture();
@@ -273,12 +282,11 @@ inline int sample_pixel(LineInfo &line, int x, int y)
         // Add to counter if a pixel is 'white enough' to be part of a
         // line
         line.white_count++;
-        //int location = x / (IMAGE_SIZE_X / 3) + 3 * (y / (IMAGE_SIZE_Y / 3));
-        //line.compass[location]++;
 
         if (y == 0)
         {
             line.north = true;
+            line.north_error += sign(x - IMAGE_SIZE_X / 2) * (x - IMAGE_SIZE_X / 2);
         }
         else if (y > (IMAGE_SIZE_Y - 1) - SAMPLE_STEPS)
         {

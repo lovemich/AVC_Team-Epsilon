@@ -26,6 +26,10 @@ void follow_line()
     for (int i = 0; true; i++)
     {
         int error = sample_image(line);
+        //printf(line.north ? "Line: N" : "Line:  ");
+        //printf(line.east ? "E" : " ");
+        //printf(line.south ? "S" : " ");
+        //printf(line.west ? "W\n" : "\n");
 
         // Check if we have reached the end of the curvy maze
         // if (
@@ -34,7 +38,7 @@ void follow_line()
         //     )
         if (!line.north && line.east && line.south && line.west)
         {
-            printf("ATTEMPT stop %i : %i\n", line.white_count, STOP_COUNT);
+            printf("ATTEMPT stop\n");
             break;
         }
 
@@ -43,9 +47,9 @@ void follow_line()
         {
             if (line.east)
             {
-                printf("ATTEMPT save right");
+                printf("ATTEMPT save right\n");
                 set_speed(0);
-                turn(90);
+                turn(75);
                 while (!line.north)
                 {
                     sample_image(line);
@@ -53,9 +57,9 @@ void follow_line()
             }
             else if (line.west)
             {
-                printf("ATTEMPT save left");
+                printf("ATTEMPT save left\n");
                 set_speed(0);
-                turn(-90);
+                turn(-75);
                 while (!line.north)
                 {
                     sample_image(line);
@@ -139,11 +143,14 @@ void follow_square_line()
         if (line.south && line.west)
         {
             printf("ATTEMPT Going square left\n");
+            Sleep(0, REVERSE_DELAY);
             set_speed(0);
-            turn(-255);
+            turn(-TURN_90_SPEED);
             Sleep(0, TURN_90_DELAY);
             set_speed(SPEED_DEF);
             turn(0);
+            Sleep(0, TURN_90_DELAY);
+            goto detected_line;
         }
         // Check right
         // else if (
@@ -154,11 +161,14 @@ void follow_square_line()
         else if (!line.north && line.east && line.south && !line.west)
         {
             printf("ATTEMPT Going square right\n");
+            Sleep(0, REVERSE_DELAY);
             set_speed(0);
-            turn(255);
+            turn(TURN_90_SPEED);
             Sleep(0, TURN_90_DELAY);
             set_speed(SPEED_DEF);
             turn(0);
+            Sleep(0, TURN_90_DELAY);
+            goto detected_line;
         }
         // Check centre line stop
         // else if (
@@ -172,16 +182,16 @@ void follow_square_line()
         {
             printf("ATTEMPT Dead end! Do a barrel roll!\n");
             set_speed(0);
-            turn(-50);
+            turn(2*TURN_90_SPEED);
             Sleep(0, TURN_90_DELAY * 2);
             set_speed(SPEED_DEF);
             turn(0);
-            break;
         }
 
         // Try reverse if line is lost
         if (line.white_count < STOP_COUNT)
         {
+            printf("ATTEMPT reversing");
             set_speed(-SPEED_DEF);
             reset_turn();
             //turn(sign(previous_error) * SPEED_DEF * 1);
@@ -189,13 +199,15 @@ void follow_square_line()
             // We need to get time here as to not mess with the next
             // iteration's derivative
             gettimeofday(&prev_time, nullptr);
-            Sleep(0, REVERSE_DELAY);
+            Sleep(0, REVERSE_DELAY / 2);
             continue;
         }
         else {
             // This is here to make the robot go forward after reversing
             set_speed(SPEED_DEF);
         }
+
+        detected_line:
 
         // Calculate how much to turn by
         int pixels_x = IMAGE_SIZE_X / SAMPLE_STEPS;
@@ -268,7 +280,7 @@ inline int sample_pixel(LineInfo &line, int x, int y)
         {
             line.north = true;
         }
-        else if (y > IMAGE_SIZE_Y - SAMPLE_STEPS)
+        else if (y > (IMAGE_SIZE_Y - 1) - SAMPLE_STEPS)
         {
             line.south = true;
         }
@@ -277,7 +289,7 @@ inline int sample_pixel(LineInfo &line, int x, int y)
         {
             line.west = true;
         }
-        else if (x > IMAGE_SIZE_X - SAMPLE_STEPS)
+        else if (x > (IMAGE_SIZE_X - 1) - SAMPLE_STEPS)
         {
             line.east = true;
         }
@@ -288,3 +300,4 @@ inline int sample_pixel(LineInfo &line, int x, int y)
     // No pixel: no error
     return 0;
 }
+

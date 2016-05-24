@@ -19,7 +19,7 @@ void follow_wall(){
 	int frontVal = 0;
 	int leftVal = 0;
 	int rightVal = 0;
-	while true{
+	while (true) {
 		frontVal = get_sensor_average(FRONT_PIN, TESTS);
 		leftVal = get_sensor_average(LEFT_PIN, TESTS);
 		rightVal = get_sensor_average(RIGHT_PIN, TESTS);

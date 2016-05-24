@@ -42,7 +42,7 @@ void follow_wall(){
 		else{
 			//Reverse
 		}
-		sleep(0, 5000000);
+		Sleep(0, 5000000);
 	}
 	
 }

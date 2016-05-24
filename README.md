@@ -72,7 +72,7 @@ Group Goal: Get robot moving in a straight line, able to control turning and hav
  - Logan drawn a basic design and planned parts location.
  - Michel is researching how to open the gate  but has issues with lack of information.
  - Devon created the software for movement and also started creating line following code.
-- Lavanya setup the readme and created the weekly plan layout.
+ - Lavanya setup the readme and created the weekly plan layout.
  - Brandon implemented code for sensor averaging and made sure the team got the plan done in the lab.
 
 #Week 2
@@ -135,7 +135,7 @@ Group Goal: Finish progress report/Hardware done for Quad 2 and line following c
 - Logan is working on the maze code and coming up with ideas how deal with different challenges presented by the maze ✔
 - Michal helped a little with the hardware but didn't do his task that he was set 
 - Devon has sections 1 and 2 working 100% and has started work on section 3 ✔
-- Lavanya Helped tune the line folliwng code and helped update the readme documentation ✔
+- Lavanya helped tune the line folliwng code and helped update the readme documentation ✔
 - Brandon helped devon debug and suggeted different ideas on tunning values and how to deal with the bugs✔
 
 
@@ -150,6 +150,15 @@ Group Goal: Finish progress report/Hardware done for Quad 2 and line following c
 | Brandon | Start work on Maze code/ Plan for next week and write up week progress|
 | ...  	| ... |
 Group Goal: Test for Quad 3/ Sensors start to be added 
+
+#Week 5 Review
+
+- Lewis completed the code to tell whether the bot comes up to a dead end in the maz.
+- Logan worked on the maze code.
+- Michael didn't turn up to the lab.
+- Devon had the quadrant 1, 2 and partially quad 3 done without human interaction.
+- Lavanya completed the coding she was meant to do and wrote up weekly reflection.
+- Brandon was busy with the maze code and helped write it up.
 
 #Week 6 
 | Person | Task |

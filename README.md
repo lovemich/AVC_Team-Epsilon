@@ -153,11 +153,11 @@ Group Goal: Test for Quad 3/ Sensors start to be added
 
 #Week 5 Review
 
-- Lewis completed the code to tell whether the bot comes up to a dead end in the maz.
+- Lewis completed the code to tell whether the bot comes up to a dead end in the maze.
 - Logan worked on the maze code.
 - Michael didn't turn up to the lab.
 - Devon had the quadrant 1, 2 and partially quad 3 done without human interaction.
-- Lavanya completed the coding she was meant to do and wrote up weekly reflection.
+- Lavanya completed the coding she was meant to do and wrote up the weekly reflection.
 - Brandon was busy with the maze code and helped write it up.
 
 #Week 6 

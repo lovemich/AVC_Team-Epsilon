@@ -127,11 +127,11 @@ void follow_square_line()
         if (line.south && line.west)
         {
             printf("ATTEMPT Going square left\n");
-            Sleep(0, TURN_90_DELAY*2);
+            Sleep(0, TURN_90_DELAY);
             set_speed(0);
             turn(-TURN_90_SPEED);
             square_line_rotate(line.north);
-            set_speed(SPEED_DEF);
+            set_speed(75);
             turn(0);
             Sleep(0, TURN_90_DELAY);
             gettimeofday(&prev_time, nullptr);
@@ -140,11 +140,11 @@ void follow_square_line()
         else if (!line.north && line.east && line.south && !line.west)
         {
             printf("ATTEMPT Going square right\n");
-            Sleep(0, TURN_90_DELAY*2);
+            Sleep(0, TURN_90_DELAY);
             set_speed(0);
             turn(TURN_90_SPEED);
             square_line_rotate(line.north);
-            set_speed(SPEED_DEF);
+            set_speed(75);
             turn(0);
             Sleep(0, TURN_90_DELAY);
             gettimeofday(&prev_time, nullptr);
@@ -165,7 +165,7 @@ void follow_square_line()
         if (line.white_count < STOP_COUNT)
         {
             printf("ATTEMPT reversing\n");
-            set_speed(-SPEED_DEF);
+            set_speed(-75);
             reset_turn();
             move();
             // We need to get time here as to not mess with the next
@@ -176,7 +176,7 @@ void follow_square_line()
         }
         else {
             // This is here to make the robot go forward after reversing
-            set_speed(SPEED_DEF);
+            set_speed(75);
         }
 
         // Calculate how much to turn by
@@ -204,7 +204,7 @@ void follow_square_line()
         previous_error = proportional_error;
 
         // Turn
-        set_speed(SPEED_DEF);
+        set_speed(75);
         turn(movement);
     }
     halt();

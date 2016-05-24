@@ -4,7 +4,7 @@
 const int IMAGE_SIZE_X = 320;
 const int IMAGE_SIZE_Y = 240;
 // The program samples every SAMPLE_STEPS pixels
-const int SAMPLE_STEPS = 10;
+const int SAMPLE_STEPS = 2;
 const int COLOR_WHITE = 3;
 // The time length of reverse, in microseconds
 // Cannot exceed 999999Î

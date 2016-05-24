@@ -167,7 +167,7 @@ Group Goal: Test for Quad 3/ Sensors start to be added
 | Logan   | Work on the maze code|
 | Michael | Come up with ideas to improve the look of the avc and create them|
 | Devon   | Have quad 4 at 100% working without interaction |
-| Lavanya | Look into the idea of having a speaker and playing music on the avc |
+| Lavanya | Look into the idea of having a speaker and playing music on the avc and help improve the aesthetic |
 | Brandon | Work on section 4 code/help team mates with code understanding/help test|
 | ...  	| ... |
 Group Goal: Have everything ready to be tested for section 4!

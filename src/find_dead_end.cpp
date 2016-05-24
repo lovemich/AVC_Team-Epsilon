@@ -15,15 +15,12 @@ bool find_dead_end() {
 
   front = read_analog(1);   //gather values from each sensor
   printf("%d\n", front);
-  sleep(0, 5000000);
 
   left = read_analog(2);
   printf("%d\n", front);
-  sleep(0, 5000000);
 
   right = read_analog(3);
   printf("%d\n", front);
-  sleep(0, 5000000);
 
   if(front<50 && left<50 && right<50){    //if all sensor values are small, then dead end
     return true;

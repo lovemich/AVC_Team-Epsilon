@@ -4,17 +4,17 @@
 const int IMAGE_SIZE_X = 320;
 const int IMAGE_SIZE_Y = 240;
 // The program samples every SAMPLE_STEPS pixels
-const int SAMPLE_STEPS = 5;
+const int SAMPLE_STEPS = 10;
 const int COLOR_WHITE = 3;
 // The time length of reverse, in microseconds
 // Cannot exceed 999999Î
 const int REVERSE_DELAY = 20000;
-const int TURN_90_DELAY = 45000;
-const int TURN_90_SPEED = 80;
+const int TURN_90_DELAY = 50000;
+const int TURN_90_SPEED = 75;
 // A pixel is considered white (a line) if it exceeds this value
-const int WHITE_THRESHOLD = 125;
+const int WHITE_THRESHOLD = 130;
 // This number of white pixels is required for the bot to move
-const int STOP_COUNT = 30;
+const int STOP_COUNT = 2;
 // The following are PID constants.
 const double K_P = 1.55;
 const double K_I = 0.01;
@@ -33,8 +33,6 @@ struct LineInfo
     bool east;
     bool south;
     bool west;
-    // For knowing when to stop turning on square follow
-    bool north_center;
     // Other info
     int white_count;
 };

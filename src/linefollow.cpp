@@ -127,23 +127,27 @@ void follow_square_line()
         if (line.south && line.west)
         {
             printf("ATTEMPT Going square left\n");
+            Sleep(0, TURN_90_DELAY*2);
             set_speed(0);
             turn(-TURN_90_SPEED);
             square_line_rotate(line.north);
+            set_speed(SPEED_DEF);
             turn(0);
+            Sleep(0, TURN_90_DELAY);
             gettimeofday(&prev_time, nullptr);
-            Sleep(0, REVERSE_DELAY / 2);
         }
         // Check right
         else if (!line.north && line.east && line.south && !line.west)
         {
             printf("ATTEMPT Going square right\n");
+            Sleep(0, TURN_90_DELAY*2);
             set_speed(0);
             turn(TURN_90_SPEED);
             square_line_rotate(line.north);
+            set_speed(SPEED_DEF);
             turn(0);
+            Sleep(0, TURN_90_DELAY);
             gettimeofday(&prev_time, nullptr);
-            Sleep(0, REVERSE_DELAY / 2);
         }
         // Check center line stop
         else if (!line.north && !line.east && line.south && !line.west)
@@ -154,7 +158,7 @@ void follow_square_line()
             square_line_rotate(false);
             turn(0);
             gettimeofday(&prev_time, nullptr);
-            Sleep(0, REVERSE_DELAY / 2);
+            //Sleep(0, REVERSE_DELAY / 2);
         }
 
         // Try reverse if line is lost
@@ -219,7 +223,6 @@ inline void square_line_rotate(bool start_on_line)
         }
         else if (stage == 1 && north_center > WHITE_THRESHOLD)
         {
-            printf("ATTEMPT found line; going\n");
             break;
         }
     }
@@ -233,7 +236,7 @@ inline void square_line_rotate(bool start_on_line)
  */
 inline int sample_image(LineInfo &line)
 {
-    line = {false, false, false, false, false, 0};
+    line = {false, false, false, false, 0};
 
     int error = 0;
     take_picture();
@@ -262,10 +265,10 @@ inline int sample_pixel(LineInfo &line, int x, int y)
         if (y == 0)
         {
             line.north = true;
-            if (x == IMAGE_SIZE_X / 2)
-            {
-                line.north_center = true;
-            }
+            //if (x == IMAGE_SIZE_X / 2)
+            //{
+            //    line.north_center = true;
+            //}
         }
         else if (y > (IMAGE_SIZE_Y - 1) - SAMPLE_STEPS)
         {

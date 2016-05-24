@@ -3,7 +3,7 @@
 #include <string.h>
 #include "extern.h"
 
-int main(){
+bool find_dead_end() {
 
   init();     //initialises hardware
 
@@ -30,7 +30,7 @@ int main(){
 
   if(front<50 && left<50 && right<50){    //if all sensor values are small, then dead end
     return true;
+  } else {
+    return false;
   }
-
-
 }

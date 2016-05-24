@@ -145,9 +145,9 @@ Group Goal: Finish progress report/Hardware done for Quad 2 and line following c
 | Lewis   | Create Code to tell if it’s a dead end & come up with ideas for the IR sensor mounts ✔|
 | Logan   | work on the maze code and create the start code for section 4 ✔|
 | Michael | Create/Print 3D models for AVC sensors|
-| Devon   | Have quad 1,2,3 at 100% working without interaction |
-| Lavanya | Code for maze dead backing up |
-| Brandon | Start work on Maze code/ Plan for next week and write up week progress|
+| Devon   | Have quad 1,2,3 at 100% working without interaction (Mainly done ✔) |
+| Lavanya | Code for maze dead backing up ✔ |
+| Brandon | Start work on Maze code/ Plan for next week and write up week progress ✔|
 | ...  	| ... |
 Group Goal: Test for Quad 3/ Sensors start to be added 
 

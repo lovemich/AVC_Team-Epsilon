@@ -17,11 +17,11 @@ void deadendbackup()
   
   if((left > 50))
   {
-  set_motor(MOTOR_LEFT, left_speed);
+    set_motor(MOTOR_LEFT, left_speed);
   }
   else if(right > 50)
   {
-  set_motor(MOTOR_RIGHT, right_speed);
+    set_motor(MOTOR_RIGHT, right_speed);
   }
 
 }

@@ -128,36 +128,38 @@ void follow_square_line()
         // Check left
         if (line.south && line.west)
         {
-            printf("ATTEMPT Going square left");
-            printf(line.north ? " : line N" : " : line  ");
-            printf(line.east ? "E" : " ");
-            printf(line.south ? "S" : " ");
-            printf(line.west ? "W\n" : "\n");
-            Sleep(0, REVERSE_DELAY);
+            printf("ATTEMPT Going square left\n");
+            //printf(line.north ? " : line N" : " : line  ");
+            //printf(line.east ? "E" : " ");
+            //rintf(line.south ? "S" : " ");
+            //printf(line.west ? "W\n" : "\n");
+            //Sleep(0, REVERSE_DELAY);
             set_speed(0);
             turn(-TURN_90_SPEED);
             //Sleep(0, TURN_90_DELAY);
             square_line_rotate(line.north);
             set_speed(SPEED_DEF);
             turn(0);
-            Sleep(0, TURN_90_DELAY);
+            //Sleep(0, TURN_90_DELAY);
+            continue;
         }
         // Check right
         else if (!line.north && line.east && line.south && !line.west)
         {
-            printf("ATTEMPT Going square right");
-            printf(line.north ? " : line N" : " : line  ");
-            printf(line.east ? "E" : " ");
-            printf(line.south ? "S" : " ");
-            printf(line.west ? "W\n" : "\n");
-            Sleep(0, REVERSE_DELAY);
+            printf("ATTEMPT Going square right\n");
+            //printf(line.north ? " : line N" : " : line  ");
+            //printf(line.east ? "E" : " ");
+            //printf(line.south ? "S" : " ");
+            //printf(line.west ? "W\n" : "\n");
+            //Sleep(0, REVERSE_DELAY);
             set_speed(0);
             turn(TURN_90_SPEED);
-            // Sleep(0, TURN_90_DELAY);
+            //Sleep(0, TURN_90_DELAY);
             square_line_rotate(line.north);
             set_speed(SPEED_DEF);
             turn(0);
-            Sleep(0, TURN_90_DELAY);
+            //Sleep(0, TURN_90_DELAY);
+            continue;
         }
         // Check center line stop
         else if (!line.north && !line.east && line.south && !line.west)
@@ -169,14 +171,15 @@ void follow_square_line()
             printf(line.west ? "W\n" : "\n");
             set_speed(0);
             turn(2*TURN_90_SPEED);
-            // Sleep(0, TURN_90_DELAY * 2);
+            //Sleep(0, TURN_90_DELAY * 2);
             square_line_rotate(false);
             set_speed(SPEED_DEF);
             turn(0);
+            continue;
         }
 
         // Try reverse if line is lost
-        else if (line.white_count < STOP_COUNT)
+        if (line.white_count < STOP_COUNT)
         {
             printf("ATTEMPT reversing\n");
             set_speed(-SPEED_DEF);
@@ -227,23 +230,17 @@ void follow_square_line()
 inline void square_line_rotate(bool start_on_line)
 {
     int stage = start_on_line ? 0 : 1;
-    int direction = 0;
-    LineInfo line;
     while (true)
     {
-        sample_image(line);
-        int current_dir = sign(line.north_error);
-        if (stage == 0 && !line.north)
+        take_picture();
+        int north_center = get_pixel(IMAGE_SIZE_X / 2, 0, COLOR_WHITE);
+        if (stage == 0 && north_center < WHITE_THRESHOLD)
         {
             stage = 1;
         }
-        else if (stage == 1 && line.north)
+        else if (stage == 1 && north_center > WHITE_THRESHOLD)
         {
-            stage = 2;
-            direction = current_dir;
-        }
-        else if (stage == 2 && direction != current_dir)
-        {
+            printf("ATTEMPT found line; going\n");
             break;
         }
     }
@@ -257,7 +254,7 @@ inline void square_line_rotate(bool start_on_line)
  */
 inline int sample_image(LineInfo &line)
 {
-    line = {false, false, false, false, 0, 0};
+    line = {false, false, false, false, false, 0};
 
     int error = 0;
     take_picture();
@@ -286,7 +283,10 @@ inline int sample_pixel(LineInfo &line, int x, int y)
         if (y == 0)
         {
             line.north = true;
-            line.north_error += sign(x - IMAGE_SIZE_X / 2) * (x - IMAGE_SIZE_X / 2);
+            if (x == IMAGE_SIZE_X / 2)
+            {
+                line.north_center = true;
+            }
         }
         else if (y > (IMAGE_SIZE_Y - 1) - SAMPLE_STEPS)
         {

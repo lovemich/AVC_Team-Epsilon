@@ -24,20 +24,24 @@ void follow_wall(){
 		rightVal = get_sensor_average(RIGHT_PIN, TESTS);
 		// If there is room on the left
 		if (leftVal > LEFT_MIN){
+			set_speed(0);
 			turn(-1 * SHARP_TURN);
 		}
 		// If there is room at the front
 		else if (frontVal > FRONT_MIN){
+			set_speed(SPEED_DEF);
 			move();
 		}
 		// If there is room on the right
 		else if (rightVal > RIGHT_MIN){
+			set_speed(0);
 			turn(SHARP_TURN);
 		}
 		// If there is no room to the front or either side
 		else{
 			//Reverse
 		}
+		sleep(0, 5000000);
 	}
 	
 }

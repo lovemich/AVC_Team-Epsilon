@@ -7,6 +7,7 @@
 #include "movement.h"
 #include "extern.h"
 #include "util.h"
+#include "sensor_average.h"
 
 void follow_wall(){
   

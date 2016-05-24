@@ -15,3 +15,5 @@ const int SHARP_TURN = 80;
 const int TESTS = 10;
 
 void follow_wall();
+
+#endif

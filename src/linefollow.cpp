@@ -119,8 +119,6 @@ void follow_square_line()
     // Initialize prev_time with the current time
     gettimeofday(&prev_time, nullptr);
 
-    set_speed(SPEED_DEF);
-
     while (true)
     {
         int error = sample_image(line);
@@ -129,53 +127,34 @@ void follow_square_line()
         if (line.south && line.west)
         {
             printf("ATTEMPT Going square left\n");
-            //printf(line.north ? " : line N" : " : line  ");
-            //printf(line.east ? "E" : " ");
-            //rintf(line.south ? "S" : " ");
-            //printf(line.west ? "W\n" : "\n");
-            //Sleep(0, REVERSE_DELAY);
             set_speed(0);
             turn(-TURN_90_SPEED);
-            //Sleep(0, TURN_90_DELAY);
             square_line_rotate(line.north);
-            set_speed(SPEED_DEF);
             turn(0);
-            //Sleep(0, TURN_90_DELAY);
-            continue;
+            gettimeofday(&prev_time, nullptr);
+            Sleep(0, REVERSE_DELAY / 2);
         }
         // Check right
         else if (!line.north && line.east && line.south && !line.west)
         {
             printf("ATTEMPT Going square right\n");
-            //printf(line.north ? " : line N" : " : line  ");
-            //printf(line.east ? "E" : " ");
-            //printf(line.south ? "S" : " ");
-            //printf(line.west ? "W\n" : "\n");
-            //Sleep(0, REVERSE_DELAY);
             set_speed(0);
             turn(TURN_90_SPEED);
-            //Sleep(0, TURN_90_DELAY);
             square_line_rotate(line.north);
-            set_speed(SPEED_DEF);
             turn(0);
-            //Sleep(0, TURN_90_DELAY);
-            continue;
+            gettimeofday(&prev_time, nullptr);
+            Sleep(0, REVERSE_DELAY / 2);
         }
         // Check center line stop
         else if (!line.north && !line.east && line.south && !line.west)
         {
-            printf("ATTEMPT Dead end! Do a barrel roll!");
-            printf(line.north ? " : line N" : " : line  ");
-            printf(line.east ? "E" : " ");
-            printf(line.south ? "S" : " ");
-            printf(line.west ? "W\n" : "\n");
+            printf("ATTEMPT Dead end! Do a barrel roll!\n");
             set_speed(0);
             turn(2*TURN_90_SPEED);
-            //Sleep(0, TURN_90_DELAY * 2);
             square_line_rotate(false);
-            set_speed(SPEED_DEF);
             turn(0);
-            continue;
+            gettimeofday(&prev_time, nullptr);
+            Sleep(0, REVERSE_DELAY / 2);
         }
 
         // Try reverse if line is lost
@@ -184,7 +163,6 @@ void follow_square_line()
             printf("ATTEMPT reversing\n");
             set_speed(-SPEED_DEF);
             reset_turn();
-            //turn(sign(previous_error) * SPEED_DEF * 1);
             move();
             // We need to get time here as to not mess with the next
             // iteration's derivative
@@ -222,6 +200,7 @@ void follow_square_line()
         previous_error = proportional_error;
 
         // Turn
+        set_speed(SPEED_DEF);
         turn(movement);
     }
     halt();

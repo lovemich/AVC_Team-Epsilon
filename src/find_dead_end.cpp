@@ -4,9 +4,6 @@
 #include "extern.h"
 
 bool find_dead_end() {
-
-  init();     //initialises hardware
-
   int frontSensor = 1;    //tells which sensor is which
   int leftSensor = 2;
   int rightSensor = 3;

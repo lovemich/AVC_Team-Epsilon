@@ -1,4 +1,5 @@
 #include "extern.h"
+#include "sensor_average.h"
 
 /**
  * @param sensor the sensor port to use for the averaging

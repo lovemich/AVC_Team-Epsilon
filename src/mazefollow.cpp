@@ -47,14 +47,14 @@ void follow_wall(){
 		}
 		// If there is no room to the front or either side
 		else{
-			while(leftVal<50 && rightVal<50){
+			while(leftVal<=LEFT_MIN && rightVal<=RIGHT_MIN){
 				set_motor(MOTOR_LEFT, (-SPEED_DEF));
 				set_motor(MOTOR_RIGHT, (-SPEED_DEF)):
 			}
-			if(rightVal>50){
+			if(rightVal>RIGHT_MIN){
 				turn(SHARP_TURN);
 			}
-			else if(leftVal>50){
+			else if(leftVal>LEFT_MIN){
 				turn(-1 * SHARP_TURN);
 			}
 		}

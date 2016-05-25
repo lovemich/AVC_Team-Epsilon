@@ -232,8 +232,8 @@ void follow_square_line()
             seen_right |= pixel >= WHITE_THRESHOLD;
             error_right += pixel * i;
         }
-        error_left /= 10;
-        error_right /= 10;
+        //error_left /= 10;
+        //error_right /= 10;
         
         if (!seen_left && !seen_right) {
             set_speed(0);

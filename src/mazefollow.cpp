@@ -27,6 +27,10 @@ void follow_wall(){
 		if (leftVal > LEFT_MIN){
 			set_speed(0);
 			turn(-1 * SHARP_TURN);
+			Sleep(0, TURN_WAIT);
+			reset_turn();
+			set_speed(SPEED_DEF);
+			move();
 		}
 		// If there is room at the front
 		else if (frontVal > FRONT_MIN){
@@ -37,11 +41,16 @@ void follow_wall(){
 		else if (rightVal > RIGHT_MIN){
 			set_speed(0);
 			turn(SHARP_TURN);
+			Sleep(0, TURN_WAIT);
+			reset_turn();
+			set_speed(SPEED_DEF);
+			move();
 		}
 		// If there is no room to the front or either side
 		else{
 			//Reverse
 		}
+		// Sleeps to allow robot to move forward
 		Sleep(0, 5000000);
 	}
 	

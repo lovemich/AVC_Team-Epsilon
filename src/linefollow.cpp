@@ -110,7 +110,7 @@ void follow_line()
     halt();
 }
 
-void follow_square_line()
+/*void follow_square_line()
 {
     LineInfo line;
     int movement = 0;
@@ -210,6 +210,46 @@ void follow_square_line()
         // Turn
         turn(movement);
     }
+    halt();
+}*/
+
+void follow_square_line()
+{
+    while (true)
+    {
+        take_picture();
+        int error_left = 0;
+        int error_right = 0;
+        bool seen_left = false;
+        bool seen_right = false;
+        for (int i = -10; i < 0; i++) {
+            int pixel = get_pixel(IMAGE_SIZE_X / 2 + i, IMAGE_SIZE_Y / 2, COLOR_WHITE);
+            seen_left |= pixel >= WHITE_THRESHOLD;
+            error_left += pixel * i;
+        }
+        for (int i = 1; i <= 10; i++) {
+            int pixel = get_pixel(IMAGE_SIZE_X / 2 + i, IMAGE_SIZE_Y / 2, COLOR_WHITE);
+            seen_right |= pixel >= WHITE_THRESHOLD;
+            error_right += pixel * i;
+        }
+        error_left /= 10;
+        error_right /= 10;
+        
+        if (!seen_left && !seen_right) {
+            set_speed(0);
+            turn(50);
+        } else if (seen_left && seen_right) {
+            set_speed(0);
+            turn(-50);
+        } else if (-error_left > error_right) {
+            set_speed(0);
+            turn(-50);
+        } else {
+            set_speed(50);
+            turn(0);
+        }
+    }
+    
     halt();
 }
 

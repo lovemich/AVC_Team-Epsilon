@@ -23,7 +23,7 @@ void follow_wall(){
 		rightVal = get_sensor_average(RIGHT_PIN, TESTS);
 		printf("Front: %d, Left: %d, Right: %d \n", frontVal, leftVal, rightVal)
 		// If there is room on the left
-		if (leftVal > LEFT_MIN){
+		if (leftVal > LEFT_MAX){
 			set_speed(0);
 			turn(-1 * SHARP_TURN);
 			Sleep(0, TURN_WAIT);
@@ -32,12 +32,18 @@ void follow_wall(){
 			move();
 		}
 		// If there is room at the front
-		else if (frontVal > FRONT_MIN){
+		else if (frontVal > FRONT_MAX){
 			set_speed(SPEED_DEF);
 			move();
+			if (leftVal < LEFT_MIN){
+				turn(SLIGHT_TURN);
+			}
+			if (rightVal < RIGHT_MIN){
+				turn(-1 * SLIGHT_TURN);
+			}
 		}
 		// If there is room on the right
-		else if (rightVal > RIGHT_MIN){
+		else if (rightVal > RIGHT_MAX){
 			set_speed(0);
 			turn(SHARP_TURN);
 			Sleep(0, TURN_WAIT);
@@ -47,14 +53,14 @@ void follow_wall(){
 		}
 		// If there is no room to the front or either side
 		else{
-			while(leftVal<=LEFT_MIN && rightVal<=RIGHT_MIN){
+			while(leftVal<=LEFT_MAX && rightVal<=RIGHT_MAX){
 				set_motor(MOTOR_LEFT, (-SPEED_DEF));
 				set_motor(MOTOR_RIGHT, (-SPEED_DEF)):
 			}
-			if(rightVal>RIGHT_MIN){
+			if(rightVal>RIGHT_MAX){
 				turn(SHARP_TURN);
 			}
-			else if(leftVal>LEFT_MIN){
+			else if(leftVal>LEFT_MAX){
 				turn(-1 * SHARP_TURN);
 			}
 		}

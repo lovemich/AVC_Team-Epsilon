@@ -124,14 +124,16 @@ void follow_square_line()
         int error = sample_image(line);
 
         // Check left
-        if (line.south && line.west)
+        if (line.west && line.south)
         {
             printf("ATTEMPT Going square left\n");
+            set_speed(TURN_90_REVERSE);
+            turn(0);
             Sleep(0, TURN_90_DELAY);
             set_speed(0);
             turn(-TURN_90_SPEED);
             square_line_rotate(line.north);
-            set_speed(75);
+            set_speed(60);
             turn(0);
             Sleep(0, TURN_90_DELAY);
             gettimeofday(&prev_time, nullptr);
@@ -140,11 +142,13 @@ void follow_square_line()
         else if (!line.north && line.east && line.south && !line.west)
         {
             printf("ATTEMPT Going square right\n");
+            set_speed(TURN_90_REVERSE);
+            turn(0);
             Sleep(0, TURN_90_DELAY);
             set_speed(0);
             turn(TURN_90_SPEED);
             square_line_rotate(line.north);
-            set_speed(75);
+            set_speed(60);
             turn(0);
             Sleep(0, TURN_90_DELAY);
             gettimeofday(&prev_time, nullptr);
@@ -154,7 +158,7 @@ void follow_square_line()
         {
             printf("ATTEMPT Dead end! Do a barrel roll!\n");
             set_speed(0);
-            turn(2*TURN_90_SPEED);
+            turn(TURN_90_SPEED);
             square_line_rotate(false);
             turn(0);
             gettimeofday(&prev_time, nullptr);
@@ -165,7 +169,7 @@ void follow_square_line()
         if (line.white_count < STOP_COUNT)
         {
             printf("ATTEMPT reversing\n");
-            set_speed(-75);
+            set_speed(-60);
             reset_turn();
             move();
             // We need to get time here as to not mess with the next
@@ -176,7 +180,7 @@ void follow_square_line()
         }
         else {
             // This is here to make the robot go forward after reversing
-            set_speed(75);
+            set_speed(60);
         }
 
         // Calculate how much to turn by
@@ -204,7 +208,6 @@ void follow_square_line()
         previous_error = proportional_error;
 
         // Turn
-        set_speed(75);
         turn(movement);
     }
     halt();
@@ -216,14 +219,18 @@ inline void square_line_rotate(bool start_on_line)
     while (true)
     {
         take_picture();
-        int north_center = get_pixel(IMAGE_SIZE_X / 2, 0, COLOR_WHITE);
+        for (int i = -10; i < 10; i++) {
+        int north_center = get_pixel(IMAGE_SIZE_X / 2 + i, 0, COLOR_WHITE);
         if (stage == 0 && north_center < WHITE_THRESHOLD)
         {
             stage = 1;
+            break;
         }
         else if (stage == 1 && north_center > WHITE_THRESHOLD)
         {
-            break;
+            printf("ATTEMPT seen: %i\n", north_center);
+            return;
+        }
         }
     }
 }

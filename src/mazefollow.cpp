@@ -16,13 +16,12 @@ void follow_wall(){
    * stores the values in 3 variables
    * and adjusts motors accordingly
    */
-	int frontVal = 0;
-	int leftVal = 0;
-	int rightVal = 0;
+	int frontVal, leftVal, rightVal = 0;
 	while (true) {
 		frontVal = get_sensor_average(FRONT_PIN, TESTS);
 		leftVal = get_sensor_average(LEFT_PIN, TESTS);
 		rightVal = get_sensor_average(RIGHT_PIN, TESTS);
+		
 		// If there is room on the left
 		if (leftVal > LEFT_MIN){
 			set_speed(0);
@@ -48,10 +47,19 @@ void follow_wall(){
 		}
 		// If there is no room to the front or either side
 		else{
-			//Reverse
+			while(leftVal<50 && rightVal<50){
+				set_motor(MOTOR_LEFT, (-SPEED_DEF));
+				set_motor(MOTOR_RIGHT, (-SPEED_DEF)):
+			}
+			if(rightVal>50){
+				turn(SHARP_TURN);
+			}
+			else if(leftVal>50){
+				turn(-1 * SHARP_TURN);
+			}
 		}
 		// Sleeps to allow robot to move forward
-		Sleep(0, 5000000);
+		Sleep(0, 250);
 	}
 	
 }

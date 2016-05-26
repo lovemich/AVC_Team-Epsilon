@@ -218,11 +218,11 @@ void follow_square_line()
     while (true)
     {
         take_picture();
-        int error_left = 0;
-        int error_right = 0;
+        //int error_left = 0;
+        //int error_right = 0;
         bool seen_left = false;
         bool seen_right = false;
-        for (int i = -60; i < 0; i++) {
+        for (int i = -100; i < 0; i++) {
             int pixel = get_pixel(IMAGE_SIZE_X / 2 + i, IMAGE_SIZE_Y / 2, COLOR_WHITE);
             if (pixel >= WHITE_THRESHOLD) {
                 seen_left = true;
@@ -230,7 +230,7 @@ void follow_square_line()
             }
             //error_left += pixel * i;
         }
-        for (int i = 1; i <= 60; i++) {
+        for (int i = 1; i <= 100; i++) {
             int pixel = get_pixel(IMAGE_SIZE_X / 2 + i, IMAGE_SIZE_Y / 2, COLOR_WHITE);
             if (pixel >= WHITE_THRESHOLD) {
                 seen_right = true;
@@ -240,17 +240,17 @@ void follow_square_line()
         }
 
         if (!seen_left && !seen_right) {
-            set_speed(0);
-            turn(70);
+            set_speed(30);
+            turn(-65);
         } else if (seen_left && seen_right) {
-            set_speed(40);
-            turn(-60);
-        } else if (seen_left && !seen_right) { //(-error_left > error_right) {
             set_speed(0);
-            turn(-70);
+            turn(65);
+        } else if (seen_left && !seen_right) { //(-error_left > error_right) {
+            set_speed(30);
+            turn(65);
         } else {
-            set_speed(40);
-            turn(60); // (0);
+            set_speed(0);
+            turn(-65); // (0);
         }
     }
     halt();

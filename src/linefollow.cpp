@@ -224,29 +224,33 @@ void follow_square_line()
         bool seen_right = false;
         for (int i = -60; i < 0; i++) {
             int pixel = get_pixel(IMAGE_SIZE_X / 2 + i, IMAGE_SIZE_Y / 2, COLOR_WHITE);
-            seen_left |= pixel >= WHITE_THRESHOLD;
-            error_left += pixel * i;
+            if (pixel >= WHITE_THRESHOLD) {
+                seen_left = true;
+                break;
+            }
+            //error_left += pixel * i;
         }
         for (int i = 1; i <= 60; i++) {
             int pixel = get_pixel(IMAGE_SIZE_X / 2 + i, IMAGE_SIZE_Y / 2, COLOR_WHITE);
-            seen_right |= pixel >= WHITE_THRESHOLD;
-            error_right += pixel * i;
+            if (pixel >= WHITE_THRESHOLD) {
+                seen_right = true;
+                break;
+            }
+            //error_right += pixel * i;
         }
-        //error_left /= 10;
-        //error_right /= 10;
 
         if (!seen_left && !seen_right) {
             set_speed(0);
-            turn(75);
+            turn(70);
         } else if (seen_left && seen_right) {
+            set_speed(40);
+            turn(-60);
+        } else if (seen_left && !seen_right) { //(-error_left > error_right) {
             set_speed(0);
-            turn(-75);
-        } else if (-error_left > error_right) {
-            set_speed(0);
-            turn(75);
+            turn(-70);
         } else {
-            set_speed(70);
-            turn(0);
+            set_speed(40);
+            turn(60); // (0);
         }
     }
     halt();

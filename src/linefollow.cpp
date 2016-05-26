@@ -243,11 +243,11 @@ void follow_square_line()
         found_right:
 
         if (seen_left || seen_right) {
-            set_speed(10);//10
-            turn(-90);//-75
+            set_speed(20);//20
+            turn(-80);//-90
         } else {
-            set_speed(40);//40
-            turn(90);//70
+            set_speed(30);//30
+            turn(80);//90
         }
 
         /*if (!seen_left && !seen_right) {

@@ -7,16 +7,18 @@
 #include "util.h"
 #include "gate.h"
 #include "linefollow.h"
+#include "mazefollow.h"
 
 int main()
 {
     init();
     signal(SIGINT, stop);
-    #ifndef NOGATE
+    /*#ifndef NOGATE
         open_gate();
     #endif
     Sleep(0, 500000);
     follow_line();
-    follow_square_line();
+    follow_square_line();*/
+    mazefollow();
     return 0;
 }

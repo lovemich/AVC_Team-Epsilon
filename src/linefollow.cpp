@@ -242,16 +242,16 @@ void follow_square_line()
 
         if (!seen_left && !seen_right) {
             set_speed(0);
-            turn(75);
+            turn(70);
         } else if (seen_left && seen_right) {
             set_speed(0);
-            turn(-75);
+            turn(-70);
         } else if (seen_left && !seen_right) { //(-error_left > error_right) {
-            set_speed(50);
-            turn(-60);
+            set_speed(0);
+            turn(-70);
         } else {
-            set_speed(60);
-            turn(50); // (0);
+            set_speed(55);
+            turn(55); // (0);
         }
     }
     halt();

@@ -6,7 +6,7 @@ const int LEFT_MIN = 10;
 const int RIGHT_MIN = 10;
 
 const int FRONT_MAX = 50;
-const int LEFT MAX = 50;
+const int LEFT_MAX = 50;
 const int RIGHT_MAX = 50;
 // Pins for IR sensors
 const int FRONT_PIN = 0;

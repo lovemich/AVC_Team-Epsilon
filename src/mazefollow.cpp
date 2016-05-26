@@ -21,7 +21,7 @@ void follow_wall(){
 		frontVal = get_sensor_average(FRONT_PIN, TESTS);
 		leftVal = get_sensor_average(LEFT_PIN, TESTS);
 		rightVal = get_sensor_average(RIGHT_PIN, TESTS);
-		printf("Front: %d, Left: %d, Right: %d \n", frontVal, leftVal, rightVal)
+		printf("Front: %d, Left: %d, Right: %d \n", frontVal, leftVal, rightVal);
 		// If there is room on the left
 		if (leftVal > LEFT_MAX){
 			set_speed(0);
@@ -55,7 +55,7 @@ void follow_wall(){
 		else{
 			while(leftVal<=LEFT_MAX && rightVal<=RIGHT_MAX){
 				set_motor(MOTOR_LEFT, (-SPEED_DEF));
-				set_motor(MOTOR_RIGHT, (-SPEED_DEF)):
+				set_motor(MOTOR_RIGHT, (-SPEED_DEF));
 			}
 			if(rightVal>RIGHT_MAX){
 				turn(SHARP_TURN);

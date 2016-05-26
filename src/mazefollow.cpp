@@ -18,10 +18,10 @@ void follow_wall(){
    */
 	int frontVal, leftVal, rightVal = 0;
 	while (true) {
-		frontVal = get_sensor_average(FRONT_PIN, TESTS);
-		leftVal = get_sensor_average(LEFT_PIN, TESTS);
-		rightVal = get_sensor_average(RIGHT_PIN, TESTS);
-		printf("Front: %d, Left: %d, Right: %d \n", frontVal, leftVal, rightVal);
+		frontVal = read_analog(FRONT_PIN); // get_sensor_average
+		leftVal = read_analog(LEFT_PIN);
+		rightVal = read_analog(RIGHT_PIN);
+		printf("Front: %i, Left: %i, Right: %i \n", frontVal, leftVal, rightVal);
 		// If there is room on the left
 		if (leftVal > LEFT_MAX){
 			set_speed(0);

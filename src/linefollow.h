@@ -9,9 +9,9 @@ const int COLOR_WHITE = 3;
 // The time length of reverse, in microseconds
 // Cannot exceed 999999Î
 const int REVERSE_DELAY = 20000;
-const int TURN_90_DELAY = 100000;
-const int TURN_90_REVERSE = 65;
-const int TURN_90_SPEED = 70;
+const int TURN_90_DELAY = 124000;
+const int TURN_90_REVERSE = 68;
+const int TURN_90_SPEED = 68;
 // A pixel is considered white (a line) if it exceeds this value
 const int WHITE_THRESHOLD = 140;
 // This number of white pixels is required for the bot to move

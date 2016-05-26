@@ -31,6 +31,7 @@ void follow_line()
         if (!line.north && line.east && line.south && line.west)
         {
             printf("ATTEMPT stop\n");
+            Sleep(0, TURN_90_DELAY);
             break;
         }
 
@@ -240,17 +241,17 @@ void follow_square_line()
         }
 
         if (!seen_left && !seen_right) {
-            set_speed(30);
-            turn(-65);
+            set_speed(0);
+            turn(75);
         } else if (seen_left && seen_right) {
             set_speed(0);
-            turn(65);
+            turn(-75);
         } else if (seen_left && !seen_right) { //(-error_left > error_right) {
-            set_speed(30);
-            turn(65);
+            set_speed(50);
+            turn(-60);
         } else {
-            set_speed(0);
-            turn(-65); // (0);
+            set_speed(60);
+            turn(50); // (0);
         }
     }
     halt();

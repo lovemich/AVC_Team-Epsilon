@@ -17,7 +17,8 @@ int main()
         open_gate();
     #endif
     Sleep(0, 500000);
-    follow_line();
-    follow_square_line();
+    //follow_line();
+    //follow_square_line();
+    follow_wall();
     return 0;
 }

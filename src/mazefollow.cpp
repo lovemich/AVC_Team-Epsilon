@@ -32,7 +32,7 @@ void follow_wall(){
 			move();
 		}
 		// If there is room at the front
-		else if (frontVal > FRONT_MAX){
+		else if (frontVal > FRONT_MIN){
 			set_speed(SPEED_DEF);
 			move();
 			if (leftVal < LEFT_MIN){

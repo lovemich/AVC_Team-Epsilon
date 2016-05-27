@@ -3,3 +3,5 @@
 #include "src/gate.cpp"
 #include "src/linefollow.cpp"
 #include "src/movement.cpp"
+#include "src/mazefollow.cpp"
+#include "src/sensor_average.cpp"

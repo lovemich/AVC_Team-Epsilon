@@ -31,6 +31,8 @@ void follow_line()
         if (!line.north && line.east && line.south && line.west)
         {
             printf("ATTEMPT stop\n");
+            set_speed(-SPEED_DEF);
+            turn(30);
             Sleep(0, TURN_90_DELAY);
             break;
         }
@@ -242,7 +244,10 @@ void follow_square_line()
         }}
         found_right:
 
-        if (seen_left || seen_right) {
+        if (!seen_left && seen_right) {
+            set_speed(70);
+            turn(0);
+        } else if (seen_left || seen_right) {
             set_speed(20);//20
             turn(-80);//-90
         } else {

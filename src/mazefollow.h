@@ -4,8 +4,8 @@
 // Thresholds for IR sensors
 const int LEFT_MIN = 10;
 const int RIGHT_MIN = 10;
+const int FRONT_MIN = 10;
 
-const int FRONT_MAX = 50;
 const int LEFT_MAX = 50;
 const int RIGHT_MAX = 50;
 // Pins for IR sensors

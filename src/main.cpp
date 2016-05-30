@@ -19,6 +19,6 @@ int main()
     Sleep(0, 500000);
     follow_line();
     follow_square_line();
-    //follow_wall();
+    follow_wall();
     return 0;
 }

@@ -4,6 +4,8 @@
 #include <string.h>
 
 #include "linefollow.h"
+#include "mazefollow.h"
+#include "sensor_average.h"
 #include "movement.h"
 #include "extern.h"
 #include "util.h"
@@ -220,9 +222,12 @@ void follow_square_line()
 {
     while (true)
     {
+        bool right_wall = get_sensor_average(RIGHT_PIN, TESTS) > 200;
+        bool left_wall = get_sensor_average(LEFT_PIN, TESTS) > 200;
+        if (right_wall && left_wall) {
+            break;
+        }
         take_picture();
-        //int error_left = 0;
-        //int error_right = 0;
         bool seen_left = false;
         bool seen_right = false;
         for (int i = -100; i < 0; i++) { for (int j = -50; j <= 50; j++) {
@@ -231,7 +236,6 @@ void follow_square_line()
                 seen_left = true;
                 goto found_left;
             }
-            //error_left += pixel * i;
         }}
         found_left:
         for (int i = 1; i <= 100; i++) { for (int j = -50; j <= 50; j++) {
@@ -240,7 +244,6 @@ void follow_square_line()
                 seen_right = true;
                 goto found_right;
             }
-            //error_right += pixel * i;
         }}
         found_right:
 
@@ -254,20 +257,6 @@ void follow_square_line()
             set_speed(30);//30
             turn(80);//90
         }
-
-        /*if (!seen_left && !seen_right) {
-            set_speed(0);
-            turn(70);
-        } else if (seen_left && seen_right) {
-            set_speed(0);
-            turn(-70);
-        } else if (seen_left && !seen_right) { //(-error_left > error_right) {
-            set_speed(0);
-            turn(-70);
-        } else {
-            set_speed(55);
-            turn(55); // (0);
-        }*/
     }
     halt();
 }

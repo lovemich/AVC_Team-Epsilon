@@ -133,31 +133,31 @@
 }
 */
 void follow_wall(){
-	set_speed(60);
+	set_speed(50);
 	turn(0);
 	while(true){
 		frontVal = read_analog(FRONT_PIN);
 		leftVal = read_analog(LEFT_PIN);
 		rightVal = read_analog(RIGHT_PIN);
-		while(leftVal < (rightVal+70) && leftVal > (rightVal-70)){
-			set_speed(80);
+		while(leftVal < (rightVal+40) && leftVal > (rightVal-40)){
+			set_speed(50);
 		}
-		while(leftVal > (rightVal+70)){
+		while(leftVal > (rightVal+40)){
 			set_speed(40);			
 			turn(10);
 			Sleep(0, 500);
 		}
-		while(leftVal < (rightVal+70)){
+		while(leftVal < (rightVal+40)){
 			set_speed(40);			
 			turn(-10);
 			Sleep(0, 500);
 		}
 		if(frontVal > 550){
-			if(rightVal < 200){
+			if(rightVal < 300){
 				turn(1 * SHARP_TURN);
 				Sleep(0, TURN_WAIT);
 			}
-			if(leftVal < 200){
+			if(leftVal < 300){
 				turn(-1 * SHARP_TURN);
 				Sleep(0, TURN_WAIT);
 			}

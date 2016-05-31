@@ -11,7 +11,7 @@ const int COLOR_WHITE = 3;
 const int REVERSE_DELAY = 20000;
 const int TURN_90_DELAY = 124000;
 const int TURN_90_REVERSE = 68;
-const int TURN_90_SPEED = 68;
+const int TURN_90_SPEED = 68;//68
 // A pixel is considered white (a line) if it exceeds this value
 const int WHITE_THRESHOLD = 140;
 // This number of white pixels is required for the bot to move

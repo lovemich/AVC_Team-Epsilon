@@ -19,6 +19,7 @@ int main()
     Sleep(0, 500000);
     follow_line();
     follow_square_line();
+    printf("ATTEMPT switching to maze\n");
     follow_wall();
     return 0;
 }

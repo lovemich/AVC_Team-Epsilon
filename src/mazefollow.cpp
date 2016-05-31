@@ -80,16 +80,26 @@
 
 void follow_wall()
 {
+    set_speed(60);
+    turn(0);
     while (true)
     {
-        bool seen_wall = get_sensor_average(RIGHT_PIN, TESTS) > 500;
-
-        if (seen_wall) {
-            set_speed(30);
-            turn(-80);
+        //printf("average: %d -- %d\n", read_analog(LEFT_PIN), read_analog(RIGHT_PIN));
+        int turn_val = (read_analog(LEFT_PIN) - read_analog(RIGHT_PIN)) / 10;
+        //turn(turn_val);
+        printf("turning by %d\n", turn_val);
+        if (turn > 0) {
+           turn(-15);
+           Sleep(0, 500000);
+           turn(15);
+           Sleep(0, 500000);
+           turn(0);
         } else {
-            set_speed(20);
-            turn(80);
+           turn(15);
+           Sleep(0, 500000);
+           turn(15);
+           Sleep(0, 500000);
+           turn(0);
         }
     }
     halt();

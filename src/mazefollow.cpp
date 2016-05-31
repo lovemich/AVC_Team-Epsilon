@@ -78,7 +78,7 @@
 //	}
 //}
 
-void follow_wall()
+/*void follow_wall()
 {
     set_speed(60);
     turn(0);
@@ -100,6 +100,33 @@ void follow_wall()
            turn(15);
            Sleep(0, 500000);
            turn(0);
+        }
+    }
+    halt();
+}*/
+
+void follow_wall()
+{
+    set_speed(0);
+    while (true)
+    {
+        take_picture();
+        bool seen_wall = false;
+        for (int i = -100; i < 100; i++) { for (int j = -50; j <= 50; j++) {
+            int pixel = get_pixel(IMAGE_SIZE_X / 2 + i, IMAGE_SIZE_Y / 2 + j, COLOR_WHITE);
+            if (pixel >= WHITE_THRESHOLD) {
+                seen_wall = true;
+                goto found_wall;
+            }
+        }}
+        found_wall:
+
+        if (seen_wall) {
+            set_speed(20);//20
+            turn(75);//-80
+        } else {
+            set_speed(30);//30
+            turn(-75);//80
         }
     }
     halt();

@@ -34,13 +34,18 @@ void follow_line()
         {
             printf("ATTEMPT stop\n");
             //set_speed(-SPEED_DEF);
-            //turn(60);
+            turn(-60);
             //Sleep(0, TURN_90_DELAY);
-            //while (true) {
-                //take_picture();
-                //
-
-            //}
+            while (true) {
+                take_picture();
+                for (int i = -50; i < 50; i++) 
+                {
+                    if (get_pixel(IMAGE_SIZE_X / 2 + i, IMAGE_SIZE_Y / 2, COLOR_WHITE) > WHITE_THRESHOLD) 
+                    {
+                        break;
+                    }
+                }
+            }
             break;
         }
 
@@ -229,10 +234,10 @@ void follow_square_line()
     set_speed(0);
     while (true)
     {
-        bool right_wall = get_sensor_average(RIGHT_PIN, TESTS) > 500;
-        bool left_wall = get_sensor_average(LEFT_PIN, TESTS) > 500;
+        bool right_wall = read_analog(RIGHT_PIN) > 600;
+        bool left_wall = read_analog(LEFT_PIN) > 600;
         if (right_wall && left_wall) {
-            //break;
+            break;
         }
         take_picture();
         bool seen_left = false;
@@ -254,18 +259,7 @@ void follow_square_line()
         }}
         found_right:
 
-       if (first) {
-           if (seen_left || seen_right) {
-              first = false;
-           }
-           turn(-60);
-           continue;
-       }
-
-        /*if (!seen_left && seen_right) {
-            set_speed(70);
-            turn(0);
-        } else*/ if (seen_left || seen_right) {
+        if (seen_left || seen_right) {
             set_speed(20);//20
             turn(-75);//-80
         } else {
